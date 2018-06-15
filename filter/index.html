@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -14,9 +15,17 @@
 
     <script>
 
+        var stringArr = [
+            'доклад', 'мышца', 'король', 'тир', 'аквариум', 'соль', 'лук',
+            'отбой', 'район', 'атом', 'кора', 'косметика', 'узел', 'мазь',
+            'наглость', 'суслик', 'опала', 'палец', 'дед', 'тучи'
+        ];
+
+        ReactDOM.render(
+            React.createElement(FilterComponent, { default: stringArr }),
+            document.getElementById('main'));
 
     </script>
-
 </body>
 
 </html>
