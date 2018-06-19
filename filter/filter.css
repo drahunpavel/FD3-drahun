@@ -1,24 +1,22 @@
-.filter {
-    width: 640px;
-    margin: 10px auto;
-    padding: 10px 10px 0px;
-    border: 2px solid black;
-
+.FullList {
+    width: 350px;
+    margin: auto;
+    
 }
 
-.filter  input  {
-    margin: 0px 10px;
-}
-
-.filter .list {
-    height: 150px;
-    padding: 10px 0px 20px;
-    margin-top: 10px;
-    border-top: 2px double black;
+.FullList .list {
+    height: 250px;
+    margin-top: 20px;
+    border-top: 0.1px solid black;
     overflow-y: scroll;
 }
 
-.filter .list li {
+.FullList .list li {
+    border-bottom: 0.1px solid black;
     list-style: none;
     padding-bottom: 3px;
+}
+
+.text{
+    margin-left:78px; 
 }
