@@ -3,6 +3,17 @@ var AllGoodsComponent = React.createClass({
 
 displayName: 'AllGoodsComponent',
 
+
+getInitialState: function() {
+  return { 
+     curItemsArr:this.props.itemsArr,
+     selectCode:0,
+     curItem:null,
+    // lockEdit:false,
+    };
+},
+
+
 //проверку типов для props компонента
 
 propTypes: {
