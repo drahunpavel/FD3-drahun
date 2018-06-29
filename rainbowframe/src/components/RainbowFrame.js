@@ -16,7 +16,7 @@ class RainbowFrame extends Component {
 
         for (let i=0; i<colors.length; i++) {
             children = <div style={{ border: "solid 1px " + (colors[i]), padding: "3px" }}>
-                {console.log(children)}
+                {/* {console.log(children)} */}
                 {children}
             </div>
         }
