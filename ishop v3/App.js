@@ -1,19 +1,17 @@
 ﻿import React from 'react';
 import { render } from 'react-dom';
 
-import RainbowFrame from './components/RainbowFrame';
+import BlockIshop from './components/BlockIshop';
 
-import './style.css';
-
-var text = "RainbowFrame";
-var colors = require('./components/colors.json');
+let shopTitle="Ishop 3";
+let tableTitle=require('./src/headtable.json');
+let productsArr=require('./src/catalog.json');
 
 render(
-    <div>
-        <RainbowFrame 
-            colors = {colors}>
-            {text}
-        </RainbowFrame>
-    </div>,document.getElementById('root')
-
+    <BlockIshop
+        shopTitle={shopTitle}
+        tableTitle={tableTitle}
+        productsArr={productsArr}
+    />,
+document.getElementById('root')
 )
