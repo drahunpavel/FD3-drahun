@@ -45,7 +45,7 @@ render(){
           </thead>
           <tbody className='Products'>
             {this.props.productsArr.map(v =>
-              <Product key={v.code}
+              key={v.code}
                 num={v.code}
                 title={v.title}
                 price={v.price}
@@ -55,7 +55,7 @@ render(){
                 // cbIsSelected={this.state.isSelected == v.code ? true : false}
                 // cbIsCard={this.isCard}
                 // cbIsSelected2={this.state.isSelected == v.code ? v.code : null}
-              />
+              
             )}
           </tbody>
         </table>
