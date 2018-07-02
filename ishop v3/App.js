@@ -1,14 +1,19 @@
-﻿"use strict";
+﻿import React from 'react';
+import { render } from 'react-dom';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import RainbowFrame from './components/RainbowFrame';
 
-import TestComponent from './components/TestComponent';
+import './style.css';
 
-// если необходимо, вид сборки можно проверить в коде:
-// if (process.env.NODE_ENV === 'production') {
-// if (process.env.NODE_ENV !== 'production') {
+var text = "RainbowFrame";
+var colors = require('./components/colors.json');
 
-ReactDOM.render( 
-  <TestComponent />
-, document.getElementById('container') );
+render(
+    <div>
+        <RainbowFrame 
+            colors = {colors}>
+            {text}
+        </RainbowFrame>
+    </div>,document.getElementById('root')
+
+)
