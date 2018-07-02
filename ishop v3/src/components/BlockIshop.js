@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './components/BlockIshop.css';
 
-import Product from './components/ProductsList;
-import ProductСard from './components/ProductCard';
+// import Product from './components/ProductsList;
+// import ProductСard from './components/ProductCard';
 
-class BlockIshop extends React.Component {
+class BlockIshop extends React.Component{
     
     
     static propTypes = {
@@ -32,8 +32,8 @@ class BlockIshop extends React.Component {
 render(){
     return (
         <div>
-        <div className='Shop'>{this.props.shopTitle}</div>
-        <table className='productTable'>
+            <div className=''>{this.props.shopTitle}</div>
+        <table className=''>
           <thead key={this.props.tableTitle.code} className='Title'>
             <tr>
               <td> {this.props.tableTitle.title}</td>
@@ -43,31 +43,10 @@ render(){
               <td>Редактирование</td>
             </tr>
           </thead>
-          <tbody className='Products'>
-            {this.props.productsArr.map(v =>
-              key={v.code}
-                num={v.code}
-                title={v.title}
-                price={v.price}
-                url={v.url}
-                quantity={v.quantity}
-                // cbIsSelectFunc={this.isSelectFunc}
-                // cbIsSelected={this.state.isSelected == v.code ? true : false}
-                // cbIsCard={this.isCard}
-                // cbIsSelected2={this.state.isSelected == v.code ? v.code : null}
-              
-            )}
-          </tbody>
-        </table>
-        {/* <button className="newButton" onClick={this.isNew}  >Новый товар</button> */}
-        {/* {this.state.isSelected ?
-          <Card className='card'
-            name={this.state.curentCard.name}
-            price={this.state.curentCard.price}
-            url={this.state.curentCard.url}
-            amount={this.state.curentCard.amount}
-          /> : null
-        } */}
+
+        </table> */}
+
+
       </div>
     );
 };
