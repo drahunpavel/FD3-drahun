@@ -1,18 +1,20 @@
-﻿"use strict";
-
-import React from 'react';
+﻿import React from 'react';
 import ReactDOM from 'react-dom';
 
-import IShop from './components/ishop';
 
-let shopText = 'ishop (интернет-магазин)';
-let titleHash = require('./theadtable.json');
-let productsArr = require('./products.json');
+import BlockIshop from './src/components/BlockIshop';
+
+
+let shopTitle = 'Ishop 3 интернет-магазин';
+let tableTitle = require('./src/headtable.json');
+let productsArray = require('./src/catalog.json');
+
 
 ReactDOM.render(
-  <IShop
-    shop={shopText}
-    products={productsArr}
-    title={titleHash} />,
-  document.getElementById('container')
+  <BlockIshop
+  shopTitle={shopTitle}
+  tableTitle={tableTitle} 
+  productsArray={productsArray}
+  />,
+  document.getElementById('root')
 );
