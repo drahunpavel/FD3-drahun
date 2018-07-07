@@ -33,8 +33,8 @@ class BlockProductsList extends React.Component {
 
     deleteProduct = (EO) => {
         EO.stopPropagation();
-        console.log(EO.currentTarget);
-        this.props.cbDeleteProduct(this.props.code);
+        //console.log(EO.currentTarget);
+        this.props.cbDeleteProduct(this.props.num);
     };
 
     render() {
