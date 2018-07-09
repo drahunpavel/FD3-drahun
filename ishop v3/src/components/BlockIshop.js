@@ -42,7 +42,7 @@ class BlockIshop extends React.Component {
     errorCondition:false, //состояние ошибки при валидации полей
 
     selectedCode: '',
-    selectedName: '', //selected... хранят данные оформления нового продукта
+    selectedName: '', //selected... хранят данные оформления продукта
     selectedUrl: '',
     selectedPrice: '',
     selectedAmount: '',
@@ -73,11 +73,15 @@ class BlockIshop extends React.Component {
   }
 
   //Редактирование продукта
-  editProduct=(edithash)=>{
+  editProduct=(propsnum, propsname, propsurl, propsprice, propsamount)=>{
     console.log("Button editProduct");
-    console.log(edithash);
+    // console.log(edithash);
     this.setState({
-      editCard:edithash,
+      selectedCode:propsnum,
+      selectedName:propsname, 
+      selectedUrl: propsurl,
+      selectedPrice: propsprice,
+      selectedAmount: propsamount,
       workMode:1,
     })
     
@@ -167,8 +171,8 @@ editProductUrl=(newUrl)=>{
     }) :  
           this.state.productsArray.forEach((v) => {
             
-          if (this.state.editCard.num == v.code){
-            //console.log(saveFields.num +"=="+ v.code)
+          if (this.state.selectedCode == v.code){
+            //console.log(selectedCode.num +"=="+ v.code)
                     v.name=this.state.selectedName;
                     v.url=this.state.selectedUrl;
                     v.price=this.state.selectedPrice;
@@ -270,13 +274,17 @@ editProductUrl=(newUrl)=>{
             amount={this.state.curentCard.amount}
           /> :  null     
         } */}
-        {    console.log(this.state.editCard)}
+        {/* {    console.log(this.state.selectedCode)}
+        {    console.log(this.state.selectedName)}
+        {    console.log(this.state.selectedPrice)}
+        {    console.log(this.state.selectedUrl)}
+        {    console.log(this.state.selectedAmount)} */}
           <BlockProductCard
-            num={parseFloat(this.state.editCard.num) }
-            name={String(this.state.editCard.name) }
-            price={parseFloat(this.state.editCard.price) }
-            url={String( this.state.editCard.url)}
-            amount={parseFloat(this.state.editCard.amount)}
+            num={parseFloat(this.state.selectedCode) }
+            name={this.state.selectedName }
+            price={parseFloat(this.state.selectedPrice)  }
+            url={ this.state.selectedUrl}
+            amount={parseFloat(this.state.selectedAmount) }
 
             workMode={this.state.workMode}
 
@@ -285,6 +293,8 @@ editProductUrl=(newUrl)=>{
             cbEditProductPrice={this.editProductPrice}
             cbEditProductAmount={this.editProductAmount}
 
+
+            editCard={this.state.editCard} 
 
             cbSaveCardProduct={this.saveCardProduct}
             cbCloseCardProduct={this.closeCardProduct}

@@ -31,7 +31,7 @@ class BlockProductsList extends React.Component {
     editProduct = (EO) => {
         EO.stopPropagation();//stopPropagation препятствует продвижению события дальше, но на текущем элементе все обработчики отработают
         //console.log(EO.currentTarget.value);//event.currentTarget используется, когда один и тот же обработчик события присваивается нескольким элементам.
-        this.props.cbEditProduct(this.props);
+        this.props.cbEditProduct(this.props.num, this.props.name, this.props.url, this.props.price, this.props.amount);
     };
 
     deleteProduct = (EO) => {

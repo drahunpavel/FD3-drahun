@@ -6,20 +6,20 @@ import './BlockProductCard.css';
 class BlockProductCard extends React.Component {
 
     static propTypes = {
-        num: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        url: PropTypes.string.isRequired,
-        amount: PropTypes.number.isRequired,
+            num: PropTypes.number,
+            name: PropTypes.string,
+            price: PropTypes.number,
+            url: PropTypes.string,
+            amount: PropTypes.number,
 
         workMode: PropTypes.number,
 
-        // cbEditCard: PropTypes.shape({
+        // editCard: PropTypes.shape({
         //     num: PropTypes.number.isRequired,
         //     name: PropTypes.string.isRequired,
-        //     price: PropTypes.string.isRequired,
+        //     price: PropTypes.number.isRequired,
         //     url: PropTypes.string.isRequired,
-        //     amount: PropTypes.string.isRequired,
+        //     amount: PropTypes.number.isRequired,
         //   }),
 
 
@@ -56,7 +56,7 @@ class BlockProductCard extends React.Component {
         this.props.cbSaveCardProduct(this.props);
     }
     closeCardProduct = (EO) => {
-        //EO.stopPropagation();
+        EO.stopPropagation();
         this.props.cbCloseCardProduct();
     }
 
@@ -64,20 +64,15 @@ class BlockProductCard extends React.Component {
 
     render() {
         var errorText = 'Поле не может быть пустым!';
+        //console.log(this.props.name)
         return (
 
 
 
             //
             <div className='BlockProductCard'>
-                {(this.props.workMode == 1) &&
+                { (this.props.workMode == 1) &&
                     <div>
-                        <li>
-                            <input type="text"
-
-                                defaultValue={this.props.num}
-                            />
-                        </li>
                         <li>
                             <input type="text"
 
@@ -86,7 +81,7 @@ class BlockProductCard extends React.Component {
 
                             />
                             {
-                                (this.props.error) &&
+                                (this.props.errorCondition) &&
                                 <span className='error' >{errorText}</span>
                             }
                         </li>
@@ -96,7 +91,7 @@ class BlockProductCard extends React.Component {
                                 onChange={this.editProductUrl}
                             />
                             {
-                                (this.props.error) &&
+                                (this.props.ErrorCondition) &&
                                 <span className='error' >{errorText}</span>
                             }
                         </li>
@@ -106,7 +101,7 @@ class BlockProductCard extends React.Component {
                                 onChange={this.editProductPrice}
                             />
                             {
-                                (this.props.error) &&
+                                (this.props.errorCondition) &&
                                 <span className='error' >{errorText}</span>
                             }
                         </li>
@@ -116,14 +111,14 @@ class BlockProductCard extends React.Component {
                                 onChange={this.editProductAmount}
                             />
                             {
-                                (this.props.error) &&
+                                (this.props.errorCondition) &&
                                 <span className='error' >{errorText}</span>
                             }
                         </li>
                         <li>
                             <button className="" onClick={this.saveCardProduct}>Сохранить</button>
                             &nbsp;
-                    <button className="" onClick={this.closeCardProduct}>Отмена</button>
+                            <button className="" onClick={this.closeCardProduct}>Отмена</button>
                         </li>
                     </div>
                 }
@@ -131,18 +126,12 @@ class BlockProductCard extends React.Component {
                     <div>
                         <li>
                             <input type="text"
-
-                                defaultValue={this.props.num}
-                            />
-                        </li>
-                        <li>
-                            <input type="text"
                                 placeholder='Название продукта'
                                 //defaultValue={this.editProductName}
                                 onChange={this.editProductName}//
                             />
                             {
-                                (this.props.ErrorCondition) &&
+                                (this.props.errorCondition) &&
                                 <span className='error' >{errorText}</span>
                             }
                         </li>
@@ -153,7 +142,7 @@ class BlockProductCard extends React.Component {
                                 onChange={this.editProductUrl}
                             />
                             {
-                                (this.props.ErrorCondition) &&
+                                (this.props.errorCondition) &&
                                 <span className='error' >{errorText}</span>
                             }
                         </li>
@@ -164,7 +153,7 @@ class BlockProductCard extends React.Component {
                                 onChange={this.editProductPrice}
                             />
                             {
-                                (this.props.ErrorCondition) &&
+                                (this.props.errorCondition) &&
                                 <span className='error' >{errorText}</span>
                             }
                         </li>
@@ -175,14 +164,14 @@ class BlockProductCard extends React.Component {
                                 onChange={this.editProductAmount}
                             />
                             {
-                                (this.props.ErrorCondition) &&
+                                (this.props.errorCondition) &&
                                 <span className='error' >{errorText}</span>
                             }
                         </li>
                         <li>
                             <button className="" onClick={this.saveCardProduct}>Сохранить</button>
                             &nbsp;
-                        <button className="" onClick={this.closeCardProduct}>Отмена</button>
+                            <button className="" onClick={this.closeCardProduct}>Отмена</button>
                         </li>
 
                     </div>
