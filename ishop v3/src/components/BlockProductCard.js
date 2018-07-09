@@ -6,46 +6,190 @@ import './BlockProductCard.css';
 class BlockProductCard extends React.Component {
 
     static propTypes = {
-        num: PropTypes.number,
+        num: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         url: PropTypes.string.isRequired,
         amount: PropTypes.number.isRequired,
+
+        workMode: PropTypes.number,
+
+        // cbEditCard: PropTypes.shape({
+        //     num: PropTypes.number.isRequired,
+        //     name: PropTypes.string.isRequired,
+        //     price: PropTypes.string.isRequired,
+        //     url: PropTypes.string.isRequired,
+        //     amount: PropTypes.string.isRequired,
+        //   }),
+
+
+        cbEditProductName: PropTypes.func.isRequired,
+        cbEditProductUrl: PropTypes.func.isRequired,
+        cbEditProductPrice: PropTypes.func.isRequired,
+        cbEditProductAmount: PropTypes.func.isRequired,
+
+        cbSaveCardProduct: PropTypes.func.isRequired,
+        cbCloseCardProduct: PropTypes.func.isRequired,
+
+        errorCondition: PropTypes.bool.isRequired
     };
 
-    static defaultProps ={ //значение для новой карты
-        name:'',
-        price:0,
-        url:'',
-        amount:0
+
+    editProductName = (EO) => {
+        this.props.cbEditProductName(EO.target.value);//получаем изменненое значение через событие onChange 
+    }
+    editProductUrl = (EO) => {
+        this.props.cbEditProductUrl(EO.target.value);
+    }
+    editProductPrice = (EO) => {
+        //console.log(EO.target.value);
+        this.props.cbEditProductPrice(EO.target.value);
+    }
+    editProductAmount = (EO) => {
+        this.props.cbEditProductAmount(EO.target.value);
     }
 
-    render(){
-        return(
-            <table className="BlockProductCard">
-                <tr>
-                    <td>
-                        <input type="text"
-                            defaultValue={this.props.name}
-                        />
-                    </td>
-                    <td>
-                        <input type="text"
-                            defaultValue={<a href={this.props.url}>Ccылка на фото</a>}
-                        />
-                    </td>
-                    <td>
-                        <input type="number"
-                            defaultValue={this.props.price}
-                        />
-                    </td>
-                    <td>
-                        <input type="number"
-                            defaultValue={this.props.amount}
-                        />
-                    </td>
-                </tr>
-            </table>
+
+
+    saveCardProduct = (EO) => {
+        EO.stopPropagation();
+        this.props.cbSaveCardProduct(this.props);
+    }
+    closeCardProduct = (EO) => {
+        //EO.stopPropagation();
+        this.props.cbCloseCardProduct();
+    }
+
+
+
+    render() {
+        var errorText = 'Поле не может быть пустым!';
+        return (
+
+
+
+            //
+            <div className='BlockProductCard'>
+                {(this.props.workMode == 1) &&
+                    <div>
+                        <li>
+                            <input type="text"
+
+                                defaultValue={this.props.num}
+                            />
+                        </li>
+                        <li>
+                            <input type="text"
+
+                                defaultValue={this.props.name}
+                                onChange={this.editProductName}//
+
+                            />
+                            {
+                                (this.props.error) &&
+                                <span className='error' >{errorText}</span>
+                            }
+                        </li>
+                        <li>
+                            <input type="text"
+                                defaultValue={this.props.url}
+                                onChange={this.editProductUrl}
+                            />
+                            {
+                                (this.props.error) &&
+                                <span className='error' >{errorText}</span>
+                            }
+                        </li>
+                        <li>
+                            <input type="number"
+                                defaultValue={this.props.price}
+                                onChange={this.editProductPrice}
+                            />
+                            {
+                                (this.props.error) &&
+                                <span className='error' >{errorText}</span>
+                            }
+                        </li>
+                        <li>
+                            <input type="number"
+                                defaultValue={this.props.amount}
+                                onChange={this.editProductAmount}
+                            />
+                            {
+                                (this.props.error) &&
+                                <span className='error' >{errorText}</span>
+                            }
+                        </li>
+                        <li>
+                            <button className="" onClick={this.saveCardProduct}>Сохранить</button>
+                            &nbsp;
+                    <button className="" onClick={this.closeCardProduct}>Отмена</button>
+                        </li>
+                    </div>
+                }
+                {(this.props.workMode == 2) &&
+                    <div>
+                        <li>
+                            <input type="text"
+
+                                defaultValue={this.props.num}
+                            />
+                        </li>
+                        <li>
+                            <input type="text"
+                                placeholder='Название продукта'
+                                //defaultValue={this.editProductName}
+                                onChange={this.editProductName}//
+                            />
+                            {
+                                (this.props.ErrorCondition) &&
+                                <span className='error' >{errorText}</span>
+                            }
+                        </li>
+                        <li>
+                            <input type="text"
+                                placeholder='url'
+                                //defaultValue={this.editProductUrl}
+                                onChange={this.editProductUrl}
+                            />
+                            {
+                                (this.props.ErrorCondition) &&
+                                <span className='error' >{errorText}</span>
+                            }
+                        </li>
+                        <li>
+                            <input type="number"
+                                placeholder='Стоимость продукта'
+                                //defaultValue={this.editProductPrice}
+                                onChange={this.editProductPrice}
+                            />
+                            {
+                                (this.props.ErrorCondition) &&
+                                <span className='error' >{errorText}</span>
+                            }
+                        </li>
+                        <li>
+                            <input type="number"
+                                placeholder='количество'
+                                //defaultValue={this.editProductAmount}
+                                onChange={this.editProductAmount}
+                            />
+                            {
+                                (this.props.ErrorCondition) &&
+                                <span className='error' >{errorText}</span>
+                            }
+                        </li>
+                        <li>
+                            <button className="" onClick={this.saveCardProduct}>Сохранить</button>
+                            &nbsp;
+                        <button className="" onClick={this.closeCardProduct}>Отмена</button>
+                        </li>
+
+                    </div>
+                }
+
+            </div>
+
         )
     }
 };
