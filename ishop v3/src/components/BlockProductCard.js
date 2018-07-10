@@ -6,21 +6,13 @@ import './BlockProductCard.css';
 class BlockProductCard extends React.Component {
 
     static propTypes = {
-            num: PropTypes.number,
-            name: PropTypes.string,
-            price: PropTypes.number,
-            url: PropTypes.string,
-            amount: PropTypes.number,
+        num: PropTypes.number,
+        name: PropTypes.string,
+        price: PropTypes.number,
+        url: PropTypes.string,
+        amount: PropTypes.number,
 
         workMode: PropTypes.number,
-
-        // editCard: PropTypes.shape({
-        //     num: PropTypes.number.isRequired,
-        //     name: PropTypes.string.isRequired,
-        //     price: PropTypes.number.isRequired,
-        //     url: PropTypes.string.isRequired,
-        //     amount: PropTypes.number.isRequired,
-        //   }),
 
 
         cbEditProductName: PropTypes.func.isRequired,
@@ -31,18 +23,20 @@ class BlockProductCard extends React.Component {
         cbSaveCardProduct: PropTypes.func.isRequired,
         cbCloseCardProduct: PropTypes.func.isRequired,
 
-        errorCondition: PropTypes.bool.isRequired
+        errorCondition: PropTypes.bool.isRequired,
+
     };
 
 
     editProductName = (EO) => {
-        this.props.cbEditProductName(EO.target.value);//получаем изменненое значение через событие onChange 
+        this.props.cbEditProductName(EO.target.value);
+        console.log(EO.target.value)//получаем изменненое значение через событие onChange 
     }
     editProductUrl = (EO) => {
         this.props.cbEditProductUrl(EO.target.value);
     }
     editProductPrice = (EO) => {
-        //console.log(EO.target.value);
+        console.log(EO.target.value);
         this.props.cbEditProductPrice(EO.target.value);
     }
     editProductAmount = (EO) => {
@@ -69,10 +63,11 @@ class BlockProductCard extends React.Component {
 
 
 
-            //
+            //Разибто по условиям (this.props.workMode == 1,2,3)
             <div className='BlockProductCard'>
-                { (this.props.workMode == 1) &&
+                {(this.props.workMode == 1) &&
                     <div>
+                        <form>
                         <li>
                             <input type="text"
 
@@ -116,18 +111,21 @@ class BlockProductCard extends React.Component {
                             }
                         </li>
                         <li>
-                            <button className="" onClick={this.saveCardProduct}>Сохранить</button>
+                            <button className="" onClick={this.saveCardProduct} disabled = {this.props.errorCondition}>Сохранить</button>
                             &nbsp;
                             <button className="" onClick={this.closeCardProduct}>Отмена</button>
                         </li>
+                        </form>
                     </div>
                 }
+                {console.log(this.props.errorCondition)}
                 {(this.props.workMode == 2) &&
                     <div>
+                         <form>
                         <li>
                             <input type="text"
                                 placeholder='Название продукта'
-                                //defaultValue={this.editProductName}
+                                defaultValue={this.editProductName}
                                 onChange={this.editProductName}//
                             />
                             {
@@ -169,14 +167,50 @@ class BlockProductCard extends React.Component {
                             }
                         </li>
                         <li>
-                            <button className="" onClick={this.saveCardProduct}>Сохранить</button>
+                            <button className="" onClick={this.saveCardProduct} disabled = {this.props.errorCondition}>Сохранить</button>
                             &nbsp;
+                            <button className="" onClick={this.closeCardProduct}>Отмена</button>
+                        </li>
+                        </form>
+                    </div>
+                    
+                }
+                {(this.props.workMode == 3) &&
+                    <div>
+                        
+                        <li>
+                            <input type="text"
+                                defaultValue={this.props.name}
+                                disabled={this.props.name}
+
+                            />
+                        </li>
+
+                        <li>
+                            <input type="text"
+                                defaultValue={this.props.url}
+                                disabled={this.props.url}
+                            />
+                        </li>
+                        <li>
+                            <input type="number"
+                                defaultValue={this.props.price}
+                                disabled={this.props.price}
+
+                            />
+                        </li>
+                        <li>
+                            <input type="number"
+                                defaultValue={this.props.amount}
+                                disabled={this.props.amount}
+                            />
+                        </li>
+                        <li>
                             <button className="" onClick={this.closeCardProduct}>Отмена</button>
                         </li>
 
                     </div>
                 }
-
             </div>
 
         )

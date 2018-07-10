@@ -12,9 +12,9 @@ class BlockProductsList extends React.Component {
         url: PropTypes.string.isRequired,
         amount: PropTypes.number.isRequired,
 
-        //cbIsSelectFunc: PropTypes.func.isRequired,
+        cbIsSelectFunc: PropTypes.func.isRequired,
         cbIsSelected: PropTypes.bool.isRequired,
-        //cbIsCard: PropTypes.func.isRequired,
+
         cbDeleteProduct: PropTypes.func.isRequired,
         cbEditProduct: PropTypes.func.isRequired
     };
@@ -23,8 +23,7 @@ class BlockProductsList extends React.Component {
 
     isSelected = (EO) => {
         EO.stopPropagation();
-        this.props.cbIsSelectFunc(EO.currentTarget.className);
-        this.props.cbIsCard(this.props);
+        this.props.cbIsSelectFunc(EO.currentTarget.className, this.props.num, this.props.name, this.props.url, this.props.price, this.props.amount);
     }
 
 
@@ -36,14 +35,12 @@ class BlockProductsList extends React.Component {
 
     deleteProduct = (EO) => {
         EO.stopPropagation();
-        //console.log(EO.currentTarget);
-        this.props.cbDeleteProduct(this.props.num,this.props.name);
+        this.props.cbDeleteProduct(this.props.num, this.props.name);
     };
 
     render() {
         return (
-             <tr  >{ /* onClick={this.editProduct} className={this.props.cbIsSelected ?'selected':this.props.num }*/}
-             {/* <tr className=' selected'> */}
+            <tr className={this.props.cbIsSelected ? this.props.num + ' selected' : this.props.num} onClick={this.isSelected} >
                 <td>{this.props.name}</td>
                 <td><a href={this.props.url}>Ccылка на фото</a></td>
                 <td>{this.props.price}</td>
