@@ -1,0 +1,58 @@
+[
+    { 
+        "code": 1, 
+        "name": "CPU Intel Celeron G3900 ( 2 x 2.8 ГГц )", 
+        "price": 30, 
+        "url": "#0", 
+        "amount": 1 
+    },
+    { 
+        "code": 2, 
+        "name": "CPU Intel Pentium G4400 ( 2 x 3.3 ГГц )", 
+        "price": 40, 
+        "url": "#0", 
+        "amount": 22 
+    },
+    { 
+        "code": 3, 
+        "name": "CPU Intel Celeron ( 2 x 1.8 ГГц )", 
+        "price": 50, 
+        "url": "#0", 
+        "amount": 13 
+    },
+    { 
+        "code": 4, 
+        "name": "CPU Intel Pentium G4600 ( 2 x 3.6 ГГц )", 
+        "price": 60, 
+        "url": "#0", 
+        "amount": 47 
+    },
+    { 
+        "code": 5, 
+        "name": "CPU Intel Core i3 8100 ( 4 x 3.6 ГГц )", 
+        "price": 70, 
+        "url": "#0", 
+        "amount": 19 
+    },
+    { 
+        "code": 6, 
+        "name": "CPU Intel Core i5 7400 ( 4 x 3.0 ГГц )", 
+        "price": 80, 
+        "url": "#0", 
+        "amount": 28 
+    },
+    { 
+        "code": 7, 
+        "name": "CPU Intel Core i7 7700 ( 4 x 3.6 ГГц )", 
+        "price": 90, 
+        "url": "#0", 
+        "amount": 3 
+    },
+    { 
+        "code": 8, 
+        "name": "CPU Intel Core i7 6800K ( 6 x 3.4 ГГц )", 
+        "price": 100, 
+        "url": "#0", 
+        "amount": 4 
+    }
+]
