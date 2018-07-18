@@ -28,6 +28,8 @@ class ProductsGrid extends React.Component {
         workMode:0, //0-отсутствие карточки товара, 1-отображение выбранного товара, 2-редактирование товара, 3-добавление нового товара
     
         cardProductId:null, //данные выбранной карточки по id
+
+        //productIsClicked:false,
     };
 
     isSelected = (EO) => {
@@ -46,22 +48,22 @@ class ProductsGrid extends React.Component {
     };
 
     deleteProduct = (EO) => {
+        EO.stopPropagation() 
         if (confirm("Удалить " + ' из списка?')) {
             //EO.stopPropagation();
-            this.state.products.forEach((arr, i) => {
-                if(arr.code == EO.currentTarget.getAttribute("data-product-id")) {
+            this.state.products.filter((v, i) => {
+                if(v.code == EO.currentTarget.getAttribute("data-product-id")) {
                     this.state.products.splice(i,1);
-                    console.log(this.state.products.splice(i,1))
                 }
             });
+            //console.log(deleteProductId)
+            console.log("Удаляем товар с ID: " + EO.currentTarget.getAttribute("data-product-id"));
+            this.setState({
+                products: this.state.products,
+                workMode: 0,            
+            });
         }
-        console.log("Удаляем товар с ID: " + EO.currentTarget.getAttribute("data-product-id"));
-        this.setState({
-            workMode: 0,
-            //products: this.state.products,
-            cardProductId: null,
-            
-        });
+
     }
 
     editProduct = (EO) => {
@@ -84,16 +86,16 @@ class ProductsGrid extends React.Component {
                 <table>
                     {/* {this.props.shopTitle} */}
                     <tbody>
-                        {this.state.products.map(arr =>
-                            <tr key={arr.code} data-product-id={arr.code} className={this.state.selectedProductId == arr.code ? "selected" : null} onClick={this.isSelected}>
-                                <td>{arr.name}</td>
-                                <td><a href={arr.url}>link</a></td>
-                                <td>{arr.price}</td>
-                                <td>{arr.amount}</td>
+                        {this.state.products.map(v =>
+                            <tr key={v.code} data-product-id={v.code} className={this.state.selectedProductId == v.code ? "selected" : null} onClick={this.isSelected}>
+                                <td>{v.name}</td>
+                                <td><a href={v.url}>link</a></td>
+                                <td>{v.price}</td>
+                                <td>{v.amount}</td>
                                 <td>
-                                    <button onClick={this.editProduct} data-product-id={arr.code}>Редактировать</button>
+                                    <button onClick={this.editProduct} data-product-id={v.code} >Редактировать</button>
                                     &nbsp;
-                                    <button onClick={this.deleteProduct} data-product-id={arr.code}>Удалить</button>
+                                    <button onClick={this.deleteProduct} data-product-id={v.code} >Удалить</button>
                                 </td>
                             </tr>
                         )}

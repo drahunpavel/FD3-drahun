@@ -34,7 +34,7 @@ class ProductCard extends React.Component {
                     </div>
 
                 }
-                {(this.props.workMode == 2) &&
+                {/* {(this.props.workMode == 2) &&
                 
                 <div>
                     <form>
@@ -78,7 +78,7 @@ class ProductCard extends React.Component {
                 <p>{this.props.products[this.props.selectedProductId-1].price}</p>
                 <p>{this.props.products[this.props.selectedProductId-1].amount}</p>
                 </div>
-            }                
+            }                 */}
             </div>
         )
 
