@@ -35,7 +35,6 @@ class ProductCard extends React.Component {
         //EO.stopPropagation();
         this.props.cbSaveCardProduct(this.state.selectedName,this.state.selectedUrl,this.state.selectedPrice,this.state.selectedAmount);
         this.setState({
-            selectedPrice:'',
             errorConditionName:true,
             errorConditionUrl:true,
             errorConditionPrice:true,
@@ -46,6 +45,12 @@ class ProductCard extends React.Component {
     closeCardProduct = (EO) => {
         EO.stopPropagation();
         this.props.cbCloseCardProduct();
+        this.setState({
+            errorConditionName:true,
+            errorConditionUrl:true,
+            errorConditionPrice:true,
+            errorConditionAmount:true,
+        })
     }
 
 
