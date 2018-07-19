@@ -24,77 +24,47 @@ class ProductsGrid extends React.Component {
 
         products: this.props.startProducts,//рабочий массив
 
-        workMode:this.props.startCardWorkMode,
-        workMode:0, //0-отсутствие карточки товара, 1-отображение выбранного товара, 2-редактирование товара, 3-добавление нового товара
-    
-        cardProductId:null, //данные выбранной карточки по id
+        workMode: this.props.startCardWorkMode,
+        workMode: 0, //0-отсутствие карточки товара, 1-отображение выбранного товара, 2-редактирование товара, 3-добавление нового товара
 
-        //productIsClicked:false,
+        cardProductId: null, //данные выбранной карточки по id
 
-
-        
+        maxCode:'',
     };
 
 
 
-
-
-    // editProductName = (newName) => {
-    //     //console.log(newName)
-    //     this.setState({
-    //         selectedName:newName,
-    //     })
-    // }
-    // editProductUrl = (newUrl) => {
-    //     //console.log(newUrl)
-    //     this.setState({
-    //         selectedUrl:newUrl,
-    //     })
-    // }
-    // editProductPrice = (newPrice) => {
-    //     //console.log(newPrice)
-    //     this.setState({
-    //         selectedPrice:newPrice,
-    //     })
-    // }
-    // editProductAmount = (newAmount) => {
-    //     //console.log(newAmount)
-    //     this.setState({
-    //         selectedAmount:newAmount,
-    //     })
-    // }
-
-
-
     isSelected = (EO) => {
-        //console.log(this.state.products)
+        //console.log(this.state.products[7].code)//Math.max
         let selectedProduct = this.state.products.filter((v, i) => {
-            if(v.code == EO.currentTarget.getAttribute("data-product-id"))
-            return v;
+            //console.log(Math.max(this.state.products[i].code))
+            if (v.code == EO.currentTarget.getAttribute("data-product-id"))
+                return v;
         });
-        console.log('Выбран товар с ID: ' + EO.currentTarget.getAttribute("data-product-id"));
-        //console.log(selectedProduct)
+        console.log('Selected item с ID: ' + EO.currentTarget.getAttribute("data-product-id"));
+        console.log(this.state.products)
         this.setState({
             selectedProductId: EO.currentTarget.getAttribute("data-product-id"),
-            cardProductId:selectedProduct,
+            cardProductId: selectedProduct,
             workMode: 1,
         });
     };
 
     deleteProduct = (EO) => {
-        EO.stopPropagation() 
-        if (confirm("Удалить " + ' из списка?')) {
+
+        if (confirm("Delete " + ' from list?')) {
             //EO.stopPropagation();
+            EO.stopPropagation()
             this.state.products.filter((v, i) => {
-                if(v.code == EO.currentTarget.getAttribute("data-product-id")) {
-                    this.state.products.splice(i,1);
+                if (v.code == EO.currentTarget.getAttribute("data-product-id")) {
+                    this.state.products.splice(i, 1);
                 }
             });
             //console.log(deleteProductId)
-            console.log("Удаляем товар с ID: " + EO.currentTarget.getAttribute("data-product-id"));
+            console.log("Delete item ID: " + EO.currentTarget.getAttribute("data-product-id"));
             this.setState({
                 products: this.state.products,
-                workMode: 0,            
+                workMode: 0,
             });
         }
 
@@ -103,46 +73,65 @@ class ProductsGrid extends React.Component {
     editProduct = (EO) => {
         EO.stopPropagation();
         let editProductId = this.state.products.filter((v, i) => {
-            v.code == EO.currentTarget.getAttribute("data-product-id");
+            if (v.code == EO.currentTarget.getAttribute("data-product-id"))
                 return v;
         });
 
-        console.log("Редактируем товар с ID: " + EO.currentTarget.getAttribute("data-product-id"));
+        console.log("Edit item ID: " + EO.currentTarget.getAttribute("data-product-id"));
         this.setState({
             selectedProductId: EO.currentTarget.getAttribute("data-product-id"),
-            cardProductId:editProductId,
+            cardProductId: editProductId,
             workMode: 2,
         });
     };
 
     saveCardProduct = (selectedName, selectedUrl, selectedPrice, selectedAmount) => {
         console.log("pressed Save");
-        if(this.state.workMode == 3)
-        this.state.products.push({//набранные значения через EO.target.value  пушим в массив
-            code: this.state.products.length + 1,
-            name: selectedName,
-            url: selectedUrl,
-            price: selectedPrice,
-            amount: selectedAmount,
-          })
-          this.setState({
-            products:this.state.products,
+
+        if (this.state.workMode == 3) {
+            this.state.products.push({//набранные значения через EO.target.value  пушим в массив
+                code: this.state.maxCode+1,
+                name: selectedName,
+                url: selectedUrl,
+                price: selectedPrice,
+                amount: selectedAmount,
+            })
+        } else {
+            this.state.products.filter((v, i) => {
+                if (this.state.selectedProductId == v.code) {
+                    v.name = selectedName;
+                    v.url = selectedUrl;
+                    v.price = selectedPrice;
+                    v.amount = selectedAmount;
+                }
+            });
+        }
+
+        this.setState({
+            products: this.state.products,
             workMode: 0,
-          });
+        });
     };
 
     closeCardProduct = () => {
         console.log("pressed Close");
         this.setState({
-          workMode: 0,
+            workMode: 0,
         });
-      };
+    };
 
 
     addNewProduct = () => {
         console.log("pressed NewProduct");
+        var prodCode=[];
+        this.state.products.filter((v, i) => {
+            prodCode.push(v.code);
+        });
+        var max = Math.max.apply(null, prodCode);
+        console.log(max)
         this.setState({
-            workMode:3,
+            maxCode:max,
+            workMode: 3,
         });
     }
 
@@ -161,31 +150,25 @@ class ProductsGrid extends React.Component {
                                 <td>{v.price}</td>
                                 <td>{v.amount}</td>
                                 <td>
-                                    <button onClick={this.editProduct} data-product-id={v.code} >Редактировать</button>
+                                    <button onClick={this.editProduct} data-product-id={v.code} >Edit</button>
                                     &nbsp;
-                                    <button onClick={this.deleteProduct} data-product-id={v.code} >Удалить</button>
+                                    <button onClick={this.deleteProduct} data-product-id={v.code} >Remove</button>
                                 </td>
                             </tr>
                         )}
                     </tbody>
                 </table>
-                
-                <button onClick={this.addNewProduct}>Добавить новый товар</button>
-                
+
+                <button onClick={this.addNewProduct}>Add new product</button>
+
                 <ProductCard
                     workMode={this.state.workMode}
-                    selectedProductId = {parseFloat(this.state.selectedProductId)}
-                    cardProductId={this.state.cardProductId}     
-                    products={this.state.products}        
-                    
+                    selectedProductId={parseFloat(this.state.selectedProductId)}
+                    cardProductId={this.state.cardProductId}
+                    products={this.state.products}
+
                     cbSaveCardProduct={this.saveCardProduct}
                     cbCloseCardProduct={this.closeCardProduct}
-
-                    
-                    // cbEditProductName={this.editProductName}
-                    // cbEditProductUrl={this.editProductUrl}
-                    // cbEditProductPrice={this.editProductPrice}
-                    // cbEditProductAmount={this.editProductAmount}
                 />
             </div>
         )

@@ -12,33 +12,34 @@ class ProductCard extends React.Component {
 
     state = {
         //selectedProductId:this.props.selectedProductId,
-        errorCondition:"false",
+        errorCondition: "false",
 
 
-        
+
         selectedCode: '',
         selectedName: '', //selected... хранят данные оформления продукта
         selectedUrl: '',
         selectedPrice: '',
         selectedAmount: '',
-        
 
-        errorConditionName:true,
-        errorConditionUrl:true,
-        errorConditionPrice:true,
-        errorConditionAmount:true,
+
+        errorConditionName: true,
+        errorConditionUrl: true,
+        errorConditionPrice: true,
+        errorConditionAmount: true,
     }
 
 
 
     saveCardProduct = () => {
         //EO.stopPropagation();
-        this.props.cbSaveCardProduct(this.state.selectedName,this.state.selectedUrl,this.state.selectedPrice,this.state.selectedAmount);
+        this.props.cbSaveCardProduct(this.state.selectedName, this.state.selectedUrl, this.state.selectedPrice, this.state.selectedAmount);
         this.setState({
-            errorConditionName:true,
-            errorConditionUrl:true,
-            errorConditionPrice:true,
-            errorConditionAmount:true,
+
+            errorConditionName: true,
+            errorConditionUrl: true,
+            errorConditionPrice: true,
+            errorConditionAmount: true,
         })
     }
 
@@ -46,10 +47,10 @@ class ProductCard extends React.Component {
         EO.stopPropagation();
         this.props.cbCloseCardProduct();
         this.setState({
-            errorConditionName:true,
-            errorConditionUrl:true,
-            errorConditionPrice:true,
-            errorConditionAmount:true,
+            errorConditionName: true,
+            errorConditionUrl: true,
+            errorConditionPrice: true,
+            errorConditionAmount: true,
         })
     }
 
@@ -59,69 +60,67 @@ class ProductCard extends React.Component {
 
     editProductName = (EO) => {
         //console.log(EO.target.value)
-        if(EO.target.value!=""){
+        if (EO.target.value != "") {
             //console.log("Ошибки нет")
             this.setState({
-                selectedName:EO.target.value,
-                errorConditionName:false,
+                selectedName: EO.target.value,
+                errorConditionName: false,
             })
-        }else{
+        } else {
             this.setState({
-                errorConditionName:true,
+                errorConditionName: true,
             })
         }
     }
     editProductUrl = (EO) => {
-        console.log(EO.target.value)
+        //console.log(EO.target.value)
         let reg = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
-        if(reg.test(EO.target.value)){
+        if (reg.test(EO.target.value)) {
             //console.log("Ошибки нет")
             this.setState({
-                selectedUrl:EO.target.value,
-                errorConditionUrl:false,
+                selectedUrl: EO.target.value,
+                errorConditionUrl: false,
             })
-        }else{
+        } else {
             this.setState({
-                errorConditionUrl:true,
+                errorConditionUrl: true,
             })
         }
     }
-
     editProductPrice = (EO) => {
-        console.log(EO.target.value)
-        if(EO.target.value>0&&EO.target.value!=""){
+        //console.log(EO.target.value)
+        if (EO.target.value > 0 && EO.target.value != "") {
             //console.log("Ошибки нет")
             this.setState({
-                selectedPrice:EO.target.value,
-                errorConditionPrice:false,
+                selectedPrice: EO.target.value,
+                errorConditionPrice: false,
             })
-        }else{
+        } else {
             this.setState({
-                errorConditionPrice:true,
+                errorConditionPrice: true,
             })
         }
-        //this.props.cbEditProductPrice();
     }
     editProductAmount = (EO) => {
-        console.log(EO.target.value)
-        if(EO.target.value>=0&&EO.target.value!=""){
+        //console.log(EO.target.value)
+        if (EO.target.value >= 0 && EO.target.value != "") {
             //console.log("Ошибки нет")
             this.setState({
-                selectedAmount:EO.target.value,
-                errorConditionAmount:false,
+                selectedAmount: EO.target.value,
+                errorConditionAmount: false,
             })
-        }else{
+        } else {
             this.setState({
-                errorConditionAmount:true,
+                errorConditionAmount: true,
             })
         }
     }
 
-    
+
 
     render() {
         //console.log(this.props.cardProductId)
-        let errorText="Ошибка"
+        let errorText = "Error"
         return (
 
             <div>
@@ -142,41 +141,41 @@ class ProductCard extends React.Component {
                 {(this.props.workMode == 2) &&
 
                     <div>
-                        <form>
-                            <li>
-                                <input type="text"
-                                    placeholder='Название продукта'
-                                    defaultValue={this.props.products[this.props.selectedProductId - 1].name}
-                                //onChange={this.editProductName}//
-                                />
-                            </li>
-                            <li>
-                                <input type="text"
-                                    placeholder='url'
-                                    defaultValue={this.props.products[this.props.selectedProductId - 1].url}
-                                // onChange={this.editProductUrl}
-                                />
-                            </li>
-                            <li>
-                                <input type="number"
-                                    placeholder='Стоимость продукта'
-                                    defaultValue={this.props.products[this.props.selectedProductId - 1].price}
-                                //onChange={this.editProductPrice}
-                                />
-                            </li>
-                            <li>
-                                <input type="number"
-                                    placeholder='количество'
-                                    defaultValue={this.props.products[this.props.selectedProductId - 1].amount}
-                                //onChange={this.editProductAmount}
-                                />
-                            </li>
-                            <li>
-                                <button className="" onClick={this.saveCardProduct} disabled={this.props.errorCondition}>Сохранить</button>
-                                &nbsp;
-                        <button className="" onClick={this.closeCardProduct}>Отмена</button>
-                            </li>
-                        </form>
+
+                        <li>
+                            <input type="text"
+                                onChange={this.editProductName}
+                                defaultValue={this.props.cardProductId[0].name}
+                            />
+                            {this.state.errorConditionName ? <span className='error' >{errorText}</span> : null}
+                        </li>
+                        <li>
+                            <input type="text"
+                                onChange={this.editProductUrl}
+                                defaultValue={this.props.cardProductId[0].url}
+                                placeholder='https://mail.ru/'
+                            />
+                                                        {this.state.errorConditionUrl ? <span className='error' >{errorText}</span> : null}
+                        </li>
+                        <li>
+                            <input type="number"
+                                onChange={this.editProductPrice}
+                                defaultValue={this.props.cardProductId[0].price}
+                            />
+                                                        {this.state.errorConditionPrice ? <span className='error' >{errorText}</span> : null}
+                        </li>
+                        <li>
+                            <input type="number"
+                                onChange={this.editProductAmount}
+                                defaultValue={this.props.cardProductId[0].amount}
+                            />
+                                                        {this.state.errorConditionAmount ? <span className='error' >{errorText}</span> : null}
+                        </li>
+                        <li>
+                        <button className="" onClick={this.saveCardProduct} disabled={this.state.errorConditionName || this.state.errorConditionUrl || this.state.errorConditionPrice || this.state.errorConditionAmount}>Save</button>
+                            &nbsp;
+                            <button className="" onClick={this.closeCardProduct}>Cancel</button>
+                        </li>
 
                     </div>
                 }
@@ -186,38 +185,38 @@ class ProductCard extends React.Component {
                         <li>
                             <input type="text"
                                 onChange={this.editProductName}
-                                
+
                             />
-                            { this.state.errorConditionName?<span className='error' >{errorText}</span>:null
+                            {this.state.errorConditionName ? <span className='error' >{errorText}</span> : null
                             }
                         </li>
 
                         <li>
                             <input type="text"
-                            placeholder='https://mail.ru/'
-                            onChange={this.editProductUrl}
+                                placeholder='https://mail.ru/'
+                                onChange={this.editProductUrl}
                             />
-                            { this.state.errorConditionUrl?<span className='error' >{errorText}</span>:null
+                            {this.state.errorConditionUrl ? <span className='error' >{errorText}</span> : null
                             }
                         </li>
                         <li>
                             <input type="number"
-                            onChange={this.editProductPrice}
+                                onChange={this.editProductPrice}
                             />
-                            { this.state.errorConditionPrice?<span className='error' >{errorText}</span>:null
+                            {this.state.errorConditionPrice ? <span className='error' >{errorText}</span> : null
                             }
                         </li>
                         <li>
                             <input type="number"
-                            onChange={this.editProductAmount}
+                                onChange={this.editProductAmount}
                             />
-                            { this.state.errorConditionAmount?<span className='error' >{errorText}</span>:null
+                            {this.state.errorConditionAmount ? <span className='error' >{errorText}</span> : null
                             }
                         </li>
                         <li>
-                            <button className="" onClick={this.saveCardProduct} disabled={this.state.errorConditionName||this.state.errorConditionUrl||this.state.errorConditionPrice||this.state.errorConditionAmount}>Сохранить</button>
+                            <button className="" onClick={this.saveCardProduct} disabled={this.state.errorConditionName || this.state.errorConditionUrl || this.state.errorConditionPrice || this.state.errorConditionAmount}>Save</button>
                             &nbsp;
-                            <button className="" onClick={this.closeCardProduct}>Отмена</button>
+                            <button className="" onClick={this.closeCardProduct}>Cancel</button>
                         </li>
 
                     </div>
