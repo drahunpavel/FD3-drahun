@@ -31,41 +31,38 @@ class ProductsGrid extends React.Component {
 
         //productIsClicked:false,
 
-        selectedCode: '',
-        selectedName: '', //selected... хранят данные оформления продукта
-        selectedUrl: '',
-        selectedPrice: '',
-        selectedAmount: '',
+
+        
     };
 
 
 
 
 
-    editProductName = (newName) => {
-        //console.log(newName)
-        this.setState({
-            selectedName:newName,
-        })
-    }
-    editProductUrl = (newUrl) => {
-        //console.log(newUrl)
-        this.setState({
-            selectedUrl:newUrl,
-        })
-    }
-    editProductPrice = (newPrice) => {
-        //console.log(newPrice)
-        this.setState({
-            selectedPrice:newPrice,
-        })
-    }
-    editProductAmount = (newAmount) => {
-        //console.log(newAmount)
-        this.setState({
-            selectedAmount:newAmount,
-        })
-    }
+    // editProductName = (newName) => {
+    //     //console.log(newName)
+    //     this.setState({
+    //         selectedName:newName,
+    //     })
+    // }
+    // editProductUrl = (newUrl) => {
+    //     //console.log(newUrl)
+    //     this.setState({
+    //         selectedUrl:newUrl,
+    //     })
+    // }
+    // editProductPrice = (newPrice) => {
+    //     //console.log(newPrice)
+    //     this.setState({
+    //         selectedPrice:newPrice,
+    //     })
+    // }
+    // editProductAmount = (newAmount) => {
+    //     //console.log(newAmount)
+    //     this.setState({
+    //         selectedAmount:newAmount,
+    //     })
+    // }
 
 
 
@@ -118,15 +115,15 @@ class ProductsGrid extends React.Component {
         });
     };
 
-    saveCardProduct = () => {
+    saveCardProduct = (selectedName, selectedUrl, selectedPrice, selectedAmount) => {
         console.log("pressed Save");
         if(this.state.workMode == 3)
-        this.state.products.push({//набранные значения через EO.target.value и пушим в массив
+        this.state.products.push({//набранные значения через EO.target.value  пушим в массив
             code: this.state.products.length + 1,
-            name: this.state.selectedName,
-            url: this.state.selectedUrl,
-            price: this.state.selectedPrice,
-            amount: this.state.selectedAmount,
+            name: selectedName,
+            url: selectedUrl,
+            price: selectedPrice,
+            amount: selectedAmount,
           })
           this.setState({
             products:this.state.products,
@@ -185,10 +182,10 @@ class ProductsGrid extends React.Component {
                     cbCloseCardProduct={this.closeCardProduct}
 
                     
-                    cbEditProductName={this.editProductName}
-                    cbEditProductUrl={this.editProductUrl}
-                    cbEditProductPrice={this.editProductPrice}
-                    cbEditProductAmount={this.editProductAmount}
+                    // cbEditProductName={this.editProductName}
+                    // cbEditProductUrl={this.editProductUrl}
+                    // cbEditProductPrice={this.editProductPrice}
+                    // cbEditProductAmount={this.editProductAmount}
                 />
             </div>
         )
