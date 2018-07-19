@@ -30,7 +30,44 @@ class ProductsGrid extends React.Component {
         cardProductId:null, //данные выбранной карточки по id
 
         //productIsClicked:false,
+
+        selectedCode: '',
+        selectedName: '', //selected... хранят данные оформления продукта
+        selectedUrl: '',
+        selectedPrice: '',
+        selectedAmount: '',
     };
+
+
+
+
+
+    editProductName = (newName) => {
+        //console.log(newName)
+        this.setState({
+            selectedName:newName,
+        })
+    }
+    editProductUrl = (newUrl) => {
+        //console.log(newUrl)
+        this.setState({
+            selectedUrl:newUrl,
+        })
+    }
+    editProductPrice = (newPrice) => {
+        //console.log(newPrice)
+        this.setState({
+            selectedPrice:newPrice,
+        })
+    }
+    editProductAmount = (newAmount) => {
+        //console.log(newAmount)
+        this.setState({
+            selectedAmount:newAmount,
+        })
+    }
+
+
 
     isSelected = (EO) => {
         //console.log(this.state.products)
@@ -67,18 +104,52 @@ class ProductsGrid extends React.Component {
     }
 
     editProduct = (EO) => {
-        //EO.stopPropagation();
-        //console.log(EO.currentTarget.getAttribute("data-product-id"))
-        this.state.products.forEach((arr, i) => {
-            arr.code == EO.currentTarget.getAttribute("data-product-id");
+        EO.stopPropagation();
+        let editProductId = this.state.products.filter((v, i) => {
+            v.code == EO.currentTarget.getAttribute("data-product-id");
+                return v;
         });
 
         console.log("Редактируем товар с ID: " + EO.currentTarget.getAttribute("data-product-id"));
         this.setState({
             selectedProductId: EO.currentTarget.getAttribute("data-product-id"),
+            cardProductId:editProductId,
             workMode: 2,
         });
+    };
+
+    saveCardProduct = () => {
+        console.log("pressed Save");
+        if(this.state.workMode == 3)
+        this.state.products.push({//набранные значения через EO.target.value и пушим в массив
+            code: this.state.products.length + 1,
+            name: this.state.selectedName,
+            url: this.state.selectedUrl,
+            price: this.state.selectedPrice,
+            amount: this.state.selectedAmount,
+          })
+          this.setState({
+            products:this.state.products,
+            workMode: 0,
+          });
+    };
+
+    closeCardProduct = () => {
+        console.log("pressed Close");
+        this.setState({
+          workMode: 0,
+        });
+      };
+
+
+    addNewProduct = () => {
+        console.log("pressed NewProduct");
+        this.setState({
+            workMode:3,
+        });
     }
+
+
 
     render() {
         return (
@@ -102,13 +173,22 @@ class ProductsGrid extends React.Component {
                     </tbody>
                 </table>
                 
-                <button>Добавить новый товар</button>
+                <button onClick={this.addNewProduct}>Добавить новый товар</button>
                 
                 <ProductCard
                     workMode={this.state.workMode}
                     selectedProductId = {parseFloat(this.state.selectedProductId)}
                     cardProductId={this.state.cardProductId}     
-                    products={this.state.products}                                   
+                    products={this.state.products}        
+                    
+                    cbSaveCardProduct={this.saveCardProduct}
+                    cbCloseCardProduct={this.closeCardProduct}
+
+                    
+                    cbEditProductName={this.editProductName}
+                    cbEditProductUrl={this.editProductUrl}
+                    cbEditProductPrice={this.editProductPrice}
+                    cbEditProductAmount={this.editProductAmount}
                 />
             </div>
         )
