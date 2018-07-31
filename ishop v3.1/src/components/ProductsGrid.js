@@ -39,10 +39,11 @@ class ProductsGrid extends React.Component {
         let selectedProduct = this.state.products.filter((v, i) => {
             //console.log(Math.max(this.state.products[i].code))
             if (v.code == EO.currentTarget.getAttribute("data-product-id"))
+            //console.log(v)  - хэш с параметрами
                 return v;
         });
         console.log('Selected item с ID: ' + EO.currentTarget.getAttribute("data-product-id"));
-        console.log(this.state.products)
+        //console.log(this.state.products)
         this.setState({
             selectedProductId: EO.currentTarget.getAttribute("data-product-id"),
             cardProductId: selectedProduct,
@@ -164,7 +165,7 @@ class ProductsGrid extends React.Component {
                 <ProductCard
                     workMode={this.state.workMode}
                     selectedProductId={parseFloat(this.state.selectedProductId)}
-                    cardProductId={this.state.cardProductId}
+                    cardProductId={this.state.cardProductId}//хэш товара по выбранному ID
                     products={this.state.products}
 
                     cbSaveCardProduct={this.saveCardProduct}

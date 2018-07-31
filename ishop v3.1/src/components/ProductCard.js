@@ -6,6 +6,15 @@ import './ProductCard.css';
 class ProductCard extends React.Component {
 
     static propTypes = {
+        // cardProductId:PropTypes.shape({
+        //                 code: PropTypes.number,
+        //                 name: PropTypes.string.isRequired,
+        //                 url: PropTypes.string.isRequired,
+        //                 price: PropTypes.number.isRequired,
+        //                 amount: PropTypes.number.isRequired,
+        //             }),
+
+
         workMode: PropTypes.number,
         //selectedProductId: PropTypes.number,
     }
@@ -16,8 +25,9 @@ class ProductCard extends React.Component {
 
 
 
+
         selectedCode: '',
-        selectedName: '', //selected... хранят данные оформления продукта
+        selectedName:"", //selected... хранят данные оформления продукта
         selectedUrl: '',
         selectedPrice: '',
         selectedAmount: '',
@@ -59,7 +69,8 @@ class ProductCard extends React.Component {
 
 
     editProductName = (EO) => {
-        //console.log(EO.target.value)
+        //this.props.cardProductId[0].name
+
         if (EO.target.value != "") {
             //console.log("Ошибки нет")
             this.setState({
@@ -102,7 +113,7 @@ class ProductCard extends React.Component {
         }
     }
     editProductAmount = (EO) => {
-        //console.log(EO.target.value)
+        //console.log(EO.target.value)//id редактируемого товара
         if (EO.target.value >= 0 && EO.target.value != "") {
             //console.log("Ошибки нет")
             this.setState({
@@ -155,24 +166,24 @@ class ProductCard extends React.Component {
                                 defaultValue={this.props.cardProductId[0].url}
                                 placeholder='https://mail.ru/'
                             />
-                                                        {this.state.errorConditionUrl ? <span className='error' >{errorText}</span> : null}
+                            {this.state.errorConditionUrl ? <span className='error' >{errorText}</span> : null}
                         </li>
                         <li>
                             <input type="number"
                                 onChange={this.editProductPrice}
                                 defaultValue={this.props.cardProductId[0].price}
                             />
-                                                        {this.state.errorConditionPrice ? <span className='error' >{errorText}</span> : null}
+                            {this.state.errorConditionPrice ? <span className='error' >{errorText}</span> : null}
                         </li>
                         <li>
                             <input type="number"
                                 onChange={this.editProductAmount}
                                 defaultValue={this.props.cardProductId[0].amount}
                             />
-                                                        {this.state.errorConditionAmount ? <span className='error' >{errorText}</span> : null}
+                            {this.state.errorConditionAmount ? <span className='error' >{errorText}</span> : null}
                         </li>
                         <li>
-                        <button className="" onClick={this.saveCardProduct} disabled={this.state.errorConditionName || this.state.errorConditionUrl || this.state.errorConditionPrice || this.state.errorConditionAmount}>Save</button>
+                            <button className="" onClick={this.saveCardProduct} disabled={this.state.errorConditionName || this.state.errorConditionUrl || this.state.errorConditionPrice || this.state.errorConditionAmount}>Save</button>
                             &nbsp;
                             <button className="" onClick={this.closeCardProduct}>Cancel</button>
                         </li>
