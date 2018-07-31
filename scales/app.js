@@ -17,7 +17,7 @@ var Scales = /** @class */ (function () {
     Scales.prototype.add = function (product) {
         this.arrayProducts.push(product);
         console.log("Added: " + product.name + " with mass " + product.weight + "g");
-        console.log(this.arrayProducts);
+        console.log(this.arrayProducts[1]);
     };
     // метод получения суммарного веса добавленных продуктов
     Scales.prototype.getSumScale = function () {
