@@ -1,13 +1,3 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var Scales = /** @class */ (function () {
     function Scales() {
         this.arrayProducts = [];
@@ -16,8 +6,8 @@ var Scales = /** @class */ (function () {
     //метод добавления нового товара на весы
     Scales.prototype.add = function (product) {
         this.arrayProducts.push(product);
-        console.log("Added: " + product.name + " with mass " + product.weight + "g");
-        console.log(this.arrayProducts[1]);
+        console.log("Added: " + product.getName() + " with mass " + product.getScale() + "g");
+        //console.log(this.arrayProducts[1])
     };
     // метод получения суммарного веса добавленных продуктов
     Scales.prototype.getSumScale = function () {
@@ -28,47 +18,61 @@ var Scales = /** @class */ (function () {
     // метод получения наименования всех продуктов
     Scales.prototype.getNameList = function () {
         var fullList;
-        fullList = this.arrayProducts.map(function (item) { return item.name; });
+        fullList = this.arrayProducts.map(function (item) { return item.getName(); });
         return fullList;
     };
     return Scales;
 }());
-var Product = /** @class */ (function () {
-    function Product(_name, _weight) {
-        this.name = _name;
-        this.weight = _weight; //присваивание ранее описанному свойству
+// class Product {
+//     //описываем свойство класса
+//     name: string;
+//     weight: number;
+//     constructor(_name: string, _weight: number) {
+//         this.name = _name;
+//         this.weight = _weight;//присваивание ранее описанному свойству
+//     }
+//     // //методы
+//     // getScale(): number {
+//     //     return this.weight;
+//     // }
+//     // getName(): string {
+//     //     return this.name;
+//     // }
+// }
+var Apple = /** @class */ (function () {
+    function Apple(_weight) {
+        this.weight = _weight;
+        this.name = "Apple";
     }
-    //методы
-    Product.prototype.getScale = function () {
+    Apple.prototype.getScale = function () {
         return this.weight;
     };
-    Product.prototype.getName = function () {
+    Apple.prototype.getName = function () {
         return this.name;
     };
-    return Product;
-}());
-var Apple = /** @class */ (function (_super) {
-    __extends(Apple, _super);
-    function Apple(_name, _weight) {
-        return _super.call(this, _name, _weight) || this;
-    }
     return Apple;
-}(Product));
-var Tomato = /** @class */ (function (_super) {
-    __extends(Tomato, _super);
-    function Tomato(_name, _weight) {
-        return _super.call(this, _name, _weight) || this;
+}());
+var Tomato = /** @class */ (function () {
+    function Tomato(_weight) {
+        this.weight = _weight;
+        this.name = "Tomato";
     }
+    Tomato.prototype.getScale = function () {
+        return this.weight;
+    };
+    Tomato.prototype.getName = function () {
+        return this.name;
+    };
     return Tomato;
-}(Product));
+}());
 var scales1 = new Scales();
 //let p1:Product=new Product(this.weight,this.name);
-var a1 = new Apple('Mackintosh', 265);
-var a2 = new Apple('Melba', 264);
-var a3 = new Apple('Mantet', 195);
-var t1 = new Tomato('Sir Elian', 168);
-var t2 = new Tomato('Chio Cio San', 187);
-var t3 = new Tomato('Casamori', 252);
+var a1 = new Apple(265);
+var a2 = new Apple(264);
+var a3 = new Apple(195);
+var t1 = new Tomato(168);
+var t2 = new Tomato(187);
+var t3 = new Tomato(252);
 scales1.add(a1);
 scales1.add(a2);
 scales1.add(a3);

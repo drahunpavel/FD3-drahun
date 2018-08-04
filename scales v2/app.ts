@@ -1,45 +1,68 @@
+interface IScalable {
+    //методы
+    getScale(): number;
+    getName(): string;
+}
 
 class Scales {
-    arrayProducts: Array<Product> = [];
+    arrayProducts: Array<IScalable> = [];
 
     constructor() {
         this.arrayProducts = [];
     }
 
     //метод добавления нового товара на весы
-    add(product: Product): void {
+    add(product: IScalable): void {
         this.arrayProducts.push(product);
-        console.log("Added: "+ product.name + " with mass "+product.weight + "g");
-        console.log(this.arrayProducts[1])
+        console.log("Added: " + product.getName() + " with mass " + product.getScale() + "g");
+        //console.log(this.arrayProducts[1])
     }
 
     // метод получения суммарного веса добавленных продуктов
     getSumScale(): number {
         let fullWeight: number;
-        fullWeight = this.arrayProducts.reduce((sum: number, current: Product) => { return sum + current.getScale() }, 0);
+        fullWeight = this.arrayProducts.reduce((sum: number, current: IScalable) => { return sum + current.getScale() }, 0);
         return fullWeight;
     }
     // метод получения наименования всех продуктов
     getNameList(): string[] {
         let fullList: string[];
-        fullList = this.arrayProducts.map((item: Product) => { return item.name });
+        fullList = this.arrayProducts.map((item: IScalable) => { return item.getName() });
         return fullList;
 
     }
-    
+
 }
 
-class Product {
-    //описываем свойство класса
+// class Product {
+//     //описываем свойство класса
+//     name: string;
+//     weight: number;
+
+//     constructor(_name: string, _weight: number) {
+//         this.name = _name;
+//         this.weight = _weight;//присваивание ранее описанному свойству
+//     }
+
+//     // //методы
+//     // getScale(): number {
+//     //     return this.weight;
+//     // }
+
+//     // getName(): string {
+//     //     return this.name;
+//     // }
+// }
+
+class Apple implements IScalable {
+
     name: string;
     weight: number;
 
-    constructor(_name: string, _weight: number) {
-        this.name = _name;
-        this.weight = _weight;//присваивание ранее описанному свойству
+    constructor(_weight: number) {
+        this.weight = _weight;
+        this.name = "Apple";
     }
-
-    //методы
     getScale(): number {
         return this.weight;
     }
@@ -49,17 +72,21 @@ class Product {
     }
 }
 
-class Apple extends Product {
+class Tomato implements IScalable {
 
-    constructor(_name: string, _weight: number) {
-        super(_name, _weight)
+    name: string;
+    weight: number;
+
+    constructor(_weight: number) {
+        this.weight = _weight;
+        this.name = "Tomato";
     }
-}
+    getScale(): number {
+        return this.weight;
+    }
 
-class Tomato extends Product {
-
-    constructor(_name: string, _weight: number) {
-        super(_name, _weight)
+    getName(): string {
+        return this.name;
     }
 }
 
@@ -69,12 +96,12 @@ let scales1: Scales = new Scales();
 
 //let p1:Product=new Product(this.weight,this.name);
 
-let a1: Apple = new Apple('Mackintosh', 265);
-let a2: Apple = new Apple('Melba', 264);
-let a3: Apple = new Apple('Mantet', 195);
-let t1: Tomato = new Tomato('Sir Elian', 168);
-let t2: Tomato = new Tomato('Chio Cio San', 187);
-let t3: Tomato = new Tomato('Casamori', 252);
+let a1: Apple = new Apple(265);
+let a2: Apple = new Apple(264);
+let a3: Apple = new Apple(195);
+let t1: Tomato = new Tomato(168);
+let t2: Tomato = new Tomato(187);
+let t3: Tomato = new Tomato(252);
 
 scales1.add(a1);
 scales1.add(a2);
