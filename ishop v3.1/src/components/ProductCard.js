@@ -20,7 +20,8 @@ class ProductCard extends React.Component {
     }
 
     state = {
-        //selectedProductId:this.props.selectedProductId,
+        cbselectedProductId:this.props.selectedProductId,
+        cbcardProductId:this.props.cardProductId,
         errorCondition: "false",
 
 
@@ -56,6 +57,8 @@ class ProductCard extends React.Component {
     closeCardProduct = (EO) => {
         EO.stopPropagation();
         this.props.cbCloseCardProduct();
+        console.log(this.state.cardProductId);
+        console.log(this.state.selectedProductId);
         this.setState({
             errorConditionName: true,
             errorConditionUrl: true,
