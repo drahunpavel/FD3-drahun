@@ -34,25 +34,6 @@ class Scales {
 
 }
 
-// class Product {
-//     //описываем свойство класса
-//     name: string;
-//     weight: number;
-
-//     constructor(_name: string, _weight: number) {
-//         this.name = _name;
-//         this.weight = _weight;//присваивание ранее описанному свойству
-//     }
-
-//     // //методы
-//     // getScale(): number {
-//     //     return this.weight;
-//     // }
-
-//     // getName(): string {
-//     //     return this.name;
-//     // }
-// }
 
 class Apple implements IScalable {
 
