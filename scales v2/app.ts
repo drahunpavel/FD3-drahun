@@ -4,6 +4,42 @@ interface IScalable {
     getName(): string;
 }
 
+class Apple implements IScalable {
+
+    name: string;
+    weight: number;
+
+    constructor(_name: string,_weight: number) {
+        this.weight = _weight;
+        this.name = _name;
+    }
+    getScale(): number {
+        return this.weight;
+    }
+
+    getName(): string {
+        return this.name;
+    }
+}
+
+class Tomato implements IScalable {
+
+    name: string;
+    weight: number;
+
+    constructor(_name: string,_weight: number) {
+        this.weight = _weight;
+        this.name = _name;
+    }
+    getScale(): number {
+        return this.weight;
+    }
+
+    getName(): string {
+        return this.name;
+    }
+}
+
 class Scales {
     arrayProducts: Array<IScalable> = [];
 
@@ -35,54 +71,19 @@ class Scales {
 }
 
 
-class Apple implements IScalable {
 
-    name: string;
-    weight: number;
-
-    constructor(_weight: number) {
-        this.weight = _weight;
-        this.name = "Apple";
-    }
-    getScale(): number {
-        return this.weight;
-    }
-
-    getName(): string {
-        return this.name;
-    }
-}
-
-class Tomato implements IScalable {
-
-    name: string;
-    weight: number;
-
-    constructor(_weight: number) {
-        this.weight = _weight;
-        this.name = "Tomato";
-    }
-    getScale(): number {
-        return this.weight;
-    }
-
-    getName(): string {
-        return this.name;
-    }
-}
 
 
 
 let scales1: Scales = new Scales();
 
-//let p1:Product=new Product(this.weight,this.name);
 
-let a1: Apple = new Apple(265);
-let a2: Apple = new Apple(264);
-let a3: Apple = new Apple(195);
-let t1: Tomato = new Tomato(168);
-let t2: Tomato = new Tomato(187);
-let t3: Tomato = new Tomato(252);
+let a1: Apple = new Apple('Mackintosh', 265);
+let a2: Apple = new Apple('Melba', 264);
+let a3: Apple = new Apple('Mantet', 195);
+let t1: Tomato = new Tomato('Sir Elian', 168);
+let t2: Tomato = new Tomato('Chio Cio San', 187);
+let t3: Tomato = new Tomato('Casamori', 252);
 
 scales1.add(a1);
 scales1.add(a2);

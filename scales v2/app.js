@@ -1,3 +1,29 @@
+var Apple = /** @class */ (function () {
+    function Apple(_name, _weight) {
+        this.weight = _weight;
+        this.name = _name;
+    }
+    Apple.prototype.getScale = function () {
+        return this.weight;
+    };
+    Apple.prototype.getName = function () {
+        return this.name;
+    };
+    return Apple;
+}());
+var Tomato = /** @class */ (function () {
+    function Tomato(_name, _weight) {
+        this.weight = _weight;
+        this.name = _name;
+    }
+    Tomato.prototype.getScale = function () {
+        return this.weight;
+    };
+    Tomato.prototype.getName = function () {
+        return this.name;
+    };
+    return Tomato;
+}());
 var Scales = /** @class */ (function () {
     function Scales() {
         this.arrayProducts = [];
@@ -23,56 +49,13 @@ var Scales = /** @class */ (function () {
     };
     return Scales;
 }());
-// class Product {
-//     //описываем свойство класса
-//     name: string;
-//     weight: number;
-//     constructor(_name: string, _weight: number) {
-//         this.name = _name;
-//         this.weight = _weight;//присваивание ранее описанному свойству
-//     }
-//     // //методы
-//     // getScale(): number {
-//     //     return this.weight;
-//     // }
-//     // getName(): string {
-//     //     return this.name;
-//     // }
-// }
-var Apple = /** @class */ (function () {
-    function Apple(_weight) {
-        this.weight = _weight;
-        this.name = "Apple";
-    }
-    Apple.prototype.getScale = function () {
-        return this.weight;
-    };
-    Apple.prototype.getName = function () {
-        return this.name;
-    };
-    return Apple;
-}());
-var Tomato = /** @class */ (function () {
-    function Tomato(_weight) {
-        this.weight = _weight;
-        this.name = "Tomato";
-    }
-    Tomato.prototype.getScale = function () {
-        return this.weight;
-    };
-    Tomato.prototype.getName = function () {
-        return this.name;
-    };
-    return Tomato;
-}());
 var scales1 = new Scales();
-//let p1:Product=new Product(this.weight,this.name);
-var a1 = new Apple(265);
-var a2 = new Apple(264);
-var a3 = new Apple(195);
-var t1 = new Tomato(168);
-var t2 = new Tomato(187);
-var t3 = new Tomato(252);
+var a1 = new Apple('Mackintosh', 265);
+var a2 = new Apple('Melba', 264);
+var a3 = new Apple('Mantet', 195);
+var t1 = new Tomato('Sir Elian', 168);
+var t2 = new Tomato('Chio Cio San', 187);
+var t3 = new Tomato('Casamori', 252);
 scales1.add(a1);
 scales1.add(a2);
 scales1.add(a3);
