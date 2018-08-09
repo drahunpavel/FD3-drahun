@@ -16,16 +16,16 @@ var Scales = /** @class */ (function () {
     Scales.prototype.getSumScale = function () {
         var fullWeight = 0;
         for (var i = 0; i < this.StorageEngineArr.getCount(); i++) {
-            fullWeight += this.StorageEngineArr.getItem(i).getScale();
+            fullWeight += this.StorageEngineArr.getItem(i)["weight"];
         }
         //console.log("fullWeight: "+fullWeight);
         return fullWeight;
     };
-    // метод получения наименования всех продуктов
+    //метод получения наименования всех продуктов
     Scales.prototype.getNameList = function () {
         var fullList = [];
         for (var i = 0; i < this.StorageEngineArr.getCount(); i++) {
-            fullList.push(this.StorageEngineArr.getItem(i).getName()); //getName()=["name"]
+            fullList.push(this.StorageEngineArr.getItem(i).getName()); //.getName()=["name"]
         }
         return fullList;
     };
@@ -53,16 +53,22 @@ var ScalesStorageEngineArray = /** @class */ (function () {
     return ScalesStorageEngineArray;
 }());
 var ScalesStorageEngineLocalStorage = /** @class */ (function () {
-    function ScalesStorageEngineLocalStorage() {
-    }
     // метод добавления нового товара
+    function ScalesStorageEngineLocalStorage() {
+        localStorage.clear();
+        //let serialObj = JSON.stringify(items);
+        //localStorage.setItem("items",serialObj); 
+    }
     ScalesStorageEngineLocalStorage.prototype.addItem = function (item) {
-        localStorage.setItem(String(localStorage.length), JSON.stringify(item));
+        localStorage.setItem(String(window.localStorage.length), JSON.stringify(item));
+        //console.log(localStorage)
         console.log("added in ScalesStorageEngineLocalStorage " + item.getName());
     };
     //метод получения сохранненого объекта
     ScalesStorageEngineLocalStorage.prototype.getItem = function (index) {
-        return JSON.parse(localStorage.getItem(String(index)));
+        //return JSON.parse(localStorage.getItem(String(index)));
+        var obj = JSON.parse(window.localStorage.getItem(String(index)));
+        return new Product(obj.name, obj.weight);
     };
     ;
     //кол-во
@@ -76,7 +82,7 @@ var Product = /** @class */ (function () {
     function Product(_name, _weight) {
         this.weight = _weight;
         this.name = _name;
-        console.log("created: " + this.name + " with mass " + this.weight + "g");
+        //console.log("created: "+ this.name + " with mass "+this.weight + "g");
     }
     Product.prototype.getScale = function () {
         return this.weight;
@@ -103,14 +109,16 @@ var t1 = new Product('Sir Elian', 168);
 var t2 = new Product('Chio Cio San', 187);
 var t3 = new Product('Casamori', 252);
 console.log("===================");
-// let ssea=new ScalesStorageEngineArray();
-// ssea.addItem(a1);
-// ssea.addItem(a2);
-// ssea.addItem(a3);
-// ssea.addItem(t1);
-// ssea.addItem(t2);
-// ssea.addItem(t3);
-// let scale1=new Scales<ScalesStorageEngineArray>(ssea);
+var ssea = new ScalesStorageEngineArray();
+ssea.addItem(a1);
+ssea.addItem(a2);
+ssea.addItem(a3);
+ssea.addItem(t1);
+ssea.addItem(t2);
+ssea.addItem(t3);
+console.log("===================");
+var scale1 = new Scales(ssea);
+//console.log(ssea)
 var ssels = new ScalesStorageEngineLocalStorage();
 ssels.addItem(a1);
 ssels.addItem(a2);
@@ -118,11 +126,13 @@ ssels.addItem(a3);
 ssels.addItem(t1);
 ssels.addItem(t2);
 ssels.addItem(t3);
+console.log("===================");
+//console.log(ssels)
 var scale2 = new Scales(ssels);
-// console.log(scale1.getNameList());
-// console.log("total weight: " + scale1.getSumScale() + "g");
-// console.log("===================")
-// console.log(scale2.getNameList());
+console.log(scale1.getNameList());
+console.log("total weight: " + scale1.getSumScale() + "g");
+console.log("===================");
+console.log(scale2.getNameList());
 console.log("total weight: " + scale2.getSumScale() + "g");
 console.log("===================");
 //# sourceMappingURL=app.js.map
