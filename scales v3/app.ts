@@ -100,8 +100,8 @@ class ScalesStorageEngineLocalStorage implements IStorageEngine {
 
 class Product {
 
-    name: string;
-    weight: number;
+    private name: string;
+    private weight: number;
 
     constructor(_name: string, _weight: number) {
         this.weight = _weight;
