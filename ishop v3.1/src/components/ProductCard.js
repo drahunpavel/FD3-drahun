@@ -41,7 +41,7 @@ class ProductCard extends React.Component {
     }
 
 
-
+    
     saveCardProduct = () => {
         //EO.stopPropagation();
         this.props.cbSaveCardProduct(this.state.selectedName, this.state.selectedUrl, this.state.selectedPrice, this.state.selectedAmount);
@@ -55,10 +55,10 @@ class ProductCard extends React.Component {
     }
 
     closeCardProduct = (EO) => {
+        
         EO.stopPropagation();
         this.props.cbCloseCardProduct();
-        console.log(this.state.cardProductId);
-        console.log(this.state.selectedProductId);
+
         this.setState({
             errorConditionName: true,
             errorConditionUrl: true,
@@ -73,9 +73,10 @@ class ProductCard extends React.Component {
 
     editProductName = (EO) => {
         //this.props.cardProductId[0].name
-
+        console.log(console.log(this.props.cardProductId))
+        console.log(EO.target.value)
         if (EO.target.value != "") {
-            //console.log("Ошибки нет")
+
             this.setState({
                 selectedName: EO.target.value,
                 errorConditionName: false,
@@ -152,15 +153,19 @@ class ProductCard extends React.Component {
                     </div>
 
                 }
-                {(this.props.workMode == 2) &&
+                {(this.props.workMode == 2) && 
 
                     <div>
 
                         <li>
                             <input type="text"
                                 onChange={this.editProductName}
+                                
                                 defaultValue={this.props.cardProductId[0].name}
+                                
                             />
+                            
+                            {console.log(this.props.cardProductId[0].name)}
                             {this.state.errorConditionName ? <span className='error' >{errorText}</span> : null}
                         </li>
                         <li>
