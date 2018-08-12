@@ -1,0 +1,16 @@
+.article{
+background:rgb(206, 204, 204);
+border: 1px solid black;
+padding: 3px 5px;
+}
+
+.news_author{
+text-decoration: underline;
+color: green,
+
+}
+
+.news_text{
+    margin: 10px 0 0 0;
+    display: block;
+}
