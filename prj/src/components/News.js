@@ -21,10 +21,20 @@ class News extends React.Component {
         )
 
     };
-
+    // setState() - не изменяет this.state немедленно, а создает очередь изменений
+    // состояния. Доступ к this.state после вызова метода, потенциально может вернуть
+    // имеющееся (что равносильно - бывшее) значение.
     state = { //state Для динамисеских свойств
         //arrNews: this.props.startArray,//рабочий массив
+        counter:0,
     };
+
+    onTotalNewClick =()=>{
+        this.setState({
+            counter:++this.state.counter,
+        })
+        
+    }
 
     render() {
         return (
@@ -39,7 +49,11 @@ class News extends React.Component {
                     ) : <p>Новостей нет</p>
                 }
                 {/* {class+class} */}
-                <strong className={"new_count"+(this.props.startArray.length>0 ? "":"none")}>Всего новостей: {this.props.startArray.length}</strong>
+                <strong 
+                    className={"new_count"+(this.props.startArray.length>0 ? "":"none")}
+                    onClick={this.onTotalNewClick}>
+                    Всего новостей: {this.props.startArray.length}
+                </strong>
             </div>
         );
     }

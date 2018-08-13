@@ -9,7 +9,8 @@ class Article extends React.Component {
     getInitalState = {//getInitalState - начальное состояние компонента
         visible: false,
     }
-
+//Так же у setState есть возможность указать callback функцию, которая будет вызвана
+//после того, как новое состояние "установится".
     state = {
         news_author: this.props.data.author,
         news_text: this.props.data.text,
@@ -26,6 +27,7 @@ class Article extends React.Component {
 
     render() {
         let visible = this.state.visible; //считыванеие значения перемнной из состояния еомпонента
+        console.log("render", this);
         return (
             <div className="article">
                 <p className="news_author">{this.state.news_author}</p>
