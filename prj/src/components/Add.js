@@ -12,22 +12,38 @@ class Add extends React.Component {
         authorIsEmpty: true,
         textIsEmpty: true,
     }
-
-    onAuthorChange = (e) => {
+    onFieldChange =(fieldName, e)=> {
+        var next = {};
         if (e.target.value.trim().length > 0) {
-            this.setState({ authorIsEmpty: false })
+        next[fieldName] = false;
+        this.setState(next);
         } else {
-            this.setState({ authorIsEmpty: true })
+        next[fieldName] = true;
+        this.setState(next);
         }
-    };
+        };
+    // onFieldChange=(fieldName,EO)=>{
+    //     if (EO.target.value.trim().length > 0) {
+    //         this.setState({[''+fieldName]:false})
+    //         } else {
+    //         this.setState({[''+fieldName]:true})
+    //         }
+    // }
+    // onAuthorChange = (e) => {
+    //     if (e.target.value.trim().length > 0) {
+    //         this.setState({ authorIsEmpty: false })
+    //     } else {
+    //         this.setState({ authorIsEmpty: true })
+    //     }
+    // };
 
-    onTextChange = (e) => {
-        if (e.target.value.trim().length > 0) {
-            this.setState({ textIsEmpty: false })
-        } else {
-            this.setState({ textIsEmpty: true })
-        }
-    };
+    // onTextChange = (e) => {
+    //     if (e.target.value.trim().length > 0) {
+    //         this.setState({ textIsEmpty: false })
+    //     } else {
+    //         this.setState({ textIsEmpty: true })
+    //     }
+    // };
     // каждый раз, после любого изменения у нас вызывается setState, а значит -
     // полная перерисовка компонента.наш выбор - это второй путь. Неконтролируемый компонент
     //     Главное отличие неконтролируемого компонента от контролируемого в том, что у него
@@ -63,7 +79,7 @@ class Add extends React.Component {
     // disabled>
     // Показать alert
     // </button>
-    onCheckRuleClick = (EO) => {
+    onCheckRuleClick = () => {
         this.setState({
             btnIsDisabled: !this.state.btnIsDisabled,
         }); //устанавливаем значение в state
@@ -79,12 +95,38 @@ class Add extends React.Component {
         //console.log(this.refs);
         //alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
     }
+
+    // componentDidMount: function() {
+    //     /* Слушай событие "Создана новость"
+    //     если событие произошло, обнови this.state.news
+    //     */
+    //     },
+    //     componentWillUnmount: function() {
+    //     /* Больше не слушай событие "Создана новость" */
+    //     },
+    //     render:
+    // Глобальная система событий
+    // Напомню, у нас возник вопрос о необходимости взаимодействия двух компонентов.
+    // Эти компоненты не состоят в отношении родитель-потомок.
+    // Теперь мы можем в app.js добавить глобальную переменную:
+    // ...
+    // window.ee = new EventEmitter();
+    // ...
+    // Благодаря которой, можем генерировать событие в обработчике onBtnClickHandler
+    // компонента <Add />
+    // window.ee.emit('News.add', item); = сгенерируй событие 'News.add' и передай в
+    // качестве данных - item.
+    // И наконец, благодаря window.ee мы можем подписываться/отписываться в <App /> :
+
+//     Хорошо
+// было бы создать одну функцию, которая принимала бы аргумент - fieldName и
+// изменяла бы соответствующую переменную в state согласно нашей логике.
     render() {
         return (
             <form className='add cf'>
                 <input
                     type='text'
-                    onChange={this.onAuthorChange}
+                    onChange={this.onFieldChange.bind(this, "authorIsEmpty")}
                     className='add__author'
                     defaultValue=''
                     placeholder='Ваше имя'
@@ -92,7 +134,7 @@ class Add extends React.Component {
                 />
                 <textarea
                     className='add__text'
-                    onChange={this.onTextChange}
+                    onChange={this.onFieldChange.bind(this, "textIsEmpty")}
                     defaultValue=''
                     placeholder='Текст новости'
                     ref='text'
@@ -103,7 +145,7 @@ class Add extends React.Component {
 </label>
                 <button
                     className='add__btn'
-                    onClick={this.onBtnClickHandler}
+                    onChange={this.onFieldChange.bind(this, "textIsEmpty")}
                     ref='alert_button'
                     disabled={this.state.btnIsDisabled || this.state.authorIsEmpty || this.state.textIsEmpty}>{/*//если хотя бы одно                     из свойств состояния (agreeNotChecked, authorIsEmpty, textIsEmpty) имеет значение                     true - кнопка выключается.*/}
                     Показать alert
