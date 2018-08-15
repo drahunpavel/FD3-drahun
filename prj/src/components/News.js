@@ -37,22 +37,24 @@ class News extends React.Component {
     }
 
     render() {
+        console.log(this.props.startArray)
         return (
             <div className="news">
                 {this.props.startArray.length > 0 ? //проверка новостей на их кол-во
                     this.props.startArray.map((item, index) =>
+                   
                         <div key={index} /*data-product-id={item.code}*/ >
                             <Article 
                                 data={item} //передаем в article data=значение статьи по индексу
                             />
                         </div>
-                    ) : <p>Новостей нет</p>
+                    ) : <p>Статей нет</p>
                 }
                 {/* {class+class} */}
                 <strong 
                     className={"new_count"+(this.props.startArray.length>0 ? "":"none")}
                     onClick={this.onTotalNewClick}>
-                    Всего новостей: {this.props.startArray.length}
+                    Всего статей: {this.props.startArray.length}
                 </strong>
             </div>
         );

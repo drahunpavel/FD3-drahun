@@ -5,7 +5,7 @@ class Comments extends React.Component {
     render(){
         return(
             <div className="comments">
-                news is not
+                NN
         </div>
         );
     }
