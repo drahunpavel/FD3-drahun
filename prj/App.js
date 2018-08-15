@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 
 import News from './src/components/News';
-import TestInput from './src/components/TestInput';
+import Add from './src/components/Add';
 
 
 let startArray = require('./src/catalog.json');
@@ -11,7 +11,7 @@ let startArray = require('./src/catalog.json');
 ReactDOM.render(
   <div>
     <h3>Новости</h3>
-    <TestInput/>
+    <Add/>
     <News
       startArray={startArray}
     />
