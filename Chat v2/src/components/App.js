@@ -2,25 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //import './src/components-style/style.css';
-//import style from "./src/components-style/style";
-//import ProductCard from './ProductCard';
-//import ProductsGrid from './src/components/ProductsGrid';
 
-class Appppp extends React.Component {
+
+class App extends React.Component {
     render() {
         return (
-            <div>
-            hi!
-        </div>
-            // <div id="container">
-            //     <aside id="sidebar">Users</aside>
-            //     <section id="main">
-            //         <section id="messages-list">Messages list</section>
-            //         <section id="new-message">New message</section>
-            //     </section>
-            // </div>
+
+            <div id="container">
+                
+                <section id="main">
+                    <section id="messages-list">Messages list</section>
+                    <section id="new-message">New message</section>
+                </section>
+                <aside id="sidebar">Users</aside>
+            </div>
         );
     }
 };
 
-export default Appppp;
+export default App;

@@ -1,10 +1,18 @@
 ﻿import React from 'react';
 import ReactDOM from 'react-dom';
 
-//import App from "./src/components/App";
-//import Appppp from './src/components/Appppp';
-import Appppp from "./src/components/Appppp";
+
+import './src/components-style/style.css';
+import App from "./src/components/App";
+
+
+
+
+
 ReactDOM.render(
-  <Appppp/>,
+
+  <App />,
+  
+
   document.getElementById('root')
 );
