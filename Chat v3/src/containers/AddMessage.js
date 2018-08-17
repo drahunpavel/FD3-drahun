@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import AddMessage from '../components/AddMessage'
+import AddMessageComponent from '../components/AddMessage'
 import { addMessage } from '../actions'
 
 const mapDispatchToProps = dispatch => ({
@@ -8,4 +8,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export const AddMessage = connect(() => ({}), mapDispatchToProps)(AddMessage)
+export const AddMessage = connect(() => ({}), mapDispatchToProps)(AddMessageComponent)
