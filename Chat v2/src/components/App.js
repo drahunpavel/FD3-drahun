@@ -1,20 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//import './src/components-style/style.css';
 
+import Sidebar from "./Sidebar";
+import MessagesList from "./MessagesList";
+import AddMessage from "./AddMessage";
+import AdditionalFunctions from "./AdditionalFunctions";
 
 class App extends React.Component {
     render() {
         return (
 
             <div id="container">
-                
                 <section id="main">
-                    <section id="messages-list">Messages list</section>
-                    <section id="new-message">New message</section>
+                    <MessagesList/>
+                    <AddMessage/>
+                    {/* <section id="additional-functions">ghgh</section> */}
                 </section>
-                <aside id="sidebar">Users</aside>
+                
+                <Sidebar/>
             </div>
         );
     }

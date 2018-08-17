@@ -42,6 +42,7 @@
     "react-chat-elements": "^10.0.2",
     "react-dom": "^16.0.0",
     "react-native-vector-icons": "^5.0.0",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2"
   }
 }
