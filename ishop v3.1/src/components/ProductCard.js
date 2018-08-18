@@ -58,7 +58,7 @@ class ProductCard extends React.Component {
         
         EO.stopPropagation();
         this.props.cbCloseCardProduct();
-
+        console.log(this.newPriceRef.value);
         this.setState({
             errorConditionName: true,
             errorConditionUrl: true,
@@ -102,10 +102,25 @@ class ProductCard extends React.Component {
             })
         }
     }
+
+
+   
+    newPriceRef = null;
+
+    setNewPriceRef = (ref) => {
+      this.newPriceRef=ref;
+      if ( this.newPriceRef ) {
+      let newPrice=this.newPriceRef.value;     
+        this.setState({selectedPrice:newPrice}); 
+        console.log (newPrice)
+       }    
+      } 
+
     editProductPrice = (EO) => {
-        //console.log(EO.target.value)
-        if (EO.target.value > 0 && EO.target.value != "") {
-            //console.log("Ошибки нет")
+        
+        //console.log("props: " +this.props.cardProductId[0].price)
+        if (this.props.cardProductId[0].price) {
+            console.log("Ошибки нет")
             this.setState({
                 selectedPrice: EO.target.value,
                 errorConditionPrice: false,
@@ -134,7 +149,7 @@ class ProductCard extends React.Component {
 
 
     render() {
-        //console.log(this.props.cardProductId)
+
         let errorText = "Error"
         return (
 
@@ -149,6 +164,7 @@ class ProductCard extends React.Component {
                                 <td><p>{this.props.cardProductId[0].price}</p></td>
                                 <td><p>{this.props.cardProductId[0].amount}</p></td>
                             </tr>
+                            
                         </table>
                     </div>
 
@@ -165,7 +181,7 @@ class ProductCard extends React.Component {
                                 
                             />
                             
-                            {console.log(this.props.cardProductId[0].name)}
+                            {/* {console.log(this.props.cardProductId[0].name)} */}
                             {this.state.errorConditionName ? <span className='error' >{errorText}</span> : null}
                         </li>
                         <li>
@@ -180,6 +196,7 @@ class ProductCard extends React.Component {
                             <input type="number"
                                 onChange={this.editProductPrice}
                                 defaultValue={this.props.cardProductId[0].price}
+                                ref={this.setNewPriceRef}
                             />
                             {this.state.errorConditionPrice ? <span className='error' >{errorText}</span> : null}
                         </li>
