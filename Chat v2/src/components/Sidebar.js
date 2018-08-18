@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
 const Sidebar = ({ users }) => (
   <aside id="sidebar" className="sidebar">
@@ -20,4 +20,4 @@ Sidebar.propTypes = {
   ).isRequired
 }
 
-export default Sidebar;
+export default Sidebar

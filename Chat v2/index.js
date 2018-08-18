@@ -7,8 +7,8 @@ import { createStore } from 'redux';
 import './src/components-style/style.css';
 import App from "./src/components/App";
 
-import registerServiceWorker from './src/registerServiceWorker'
-import chat from './src/reducers'
+import registerServiceWorker from './src/registerServiceWorker';
+import chat from './src/reducers';
 
 const store = createStore(chat)
 
