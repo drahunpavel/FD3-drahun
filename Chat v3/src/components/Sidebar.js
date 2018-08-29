@@ -2,11 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const Sidebar = ({ users }) => (
-  <aside id="sidebar" className="sidebar">
-  {console.log(users)}
+  <aside id="sidebar">
+
     <ul>
       {users.map(user => (
-        <li key={user.id}>{user.name}</li>
+        
+        <li id="users-list" key={user.id}>{user.name}</li>
+        
       ))}
     </ul>
   </aside>
