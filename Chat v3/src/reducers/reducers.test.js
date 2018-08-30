@@ -1,10 +1,8 @@
-import messages from './src/reducer/messages';
-import users from './src/reducer/users';
-import * as types from './src/constants/ActionTypes';
-
-describe('Messages reducer', () => {
-
-  it('should handle ADD_MESSAGE and store every message', () => {
+import messages from './messages';
+import users from './users';
+import * as types from '../constants/ActionTypes';
+ describe('Messages reducer', () => {
+   it('should handle ADD_MESSAGE and store every message', () => {
     expect(
       messages([], {
         type: types.ADD_MESSAGE,
@@ -17,8 +15,7 @@ describe('Messages reducer', () => {
         author: 'Me'
       }
     ])
-
-    expect(
+     expect(
       messages(
         [
           {
@@ -43,8 +40,7 @@ describe('Messages reducer', () => {
       }
     ])
   })
-
-  it('should handle ADD_USER and store every user', () => {
+   it('should handle ADD_USER and store every user', () => {
     expect(
       users([], {
         type: types.ADD_USER,
@@ -55,8 +51,7 @@ describe('Messages reducer', () => {
           name: 'Tony'
       }
     ])
-
-    expect(
+     expect(
       users(
         [
           {
@@ -77,4 +72,4 @@ describe('Messages reducer', () => {
       }
     ])
   })
-})
+}) 
