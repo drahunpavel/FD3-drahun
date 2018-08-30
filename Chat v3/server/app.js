@@ -16,6 +16,7 @@ wss.on('connection', (ws) => {
   let index
   ws.on('message', (message) => {
     const data = JSON.parse(message)
+    console.log(message)
     switch (data.type) {
       case 'ADD_USER': {
         index = users.length

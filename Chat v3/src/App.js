@@ -1,16 +1,14 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
-import { Sidebar } from "./containers/Sidebar"
-import { MessagesList } from "./containers/MessagesList"
-import { AddMessage } from "./containers/AddMessage"
+import { Sidebar } from "./containers/Sidebar";
+import { MessagesList } from "./containers/MessagesList";
+import { AddMessage } from "./containers/AddMessage";
 
 class App extends Component {
 
-
-
   render() {
     return (
-      <div  id="container">
+      <div id="container">
         <Sidebar />
         <section id="main">
           <MessagesList />
@@ -21,4 +19,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default App;

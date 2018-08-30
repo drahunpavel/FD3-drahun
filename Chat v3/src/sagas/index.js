@@ -1,5 +1,5 @@
-import { takeEvery } from 'redux-saga/effects'
-import * as types from '../constants/ActionTypes'
+import { takeEvery } from 'redux-saga/effects';
+import * as types from '../constants/ActionTypes';
 
 const handleNewMessage = function* handleNewMessage(params) {
   yield takeEvery(types.ADD_MESSAGE, (action) => {
@@ -8,4 +8,4 @@ const handleNewMessage = function* handleNewMessage(params) {
   })
 }
 
-export default handleNewMessage
+export default handleNewMessage;

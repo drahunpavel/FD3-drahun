@@ -10,8 +10,8 @@ const messages = (state = [], action) => {
         }
       ])
     default:
-      return state
+      return state;
   }
 }
 
-export default messages
+export default messages;

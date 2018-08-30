@@ -1,8 +1,8 @@
-import * as types from '../constants/ActionTypes'
-import { addUser, messageReceived, populateUsersList } from '../actions'
+import * as types from '../constants/ActionTypes';
+import { addUser, messageReceived, populateUsersList } from '../actions';
 
 const setupSocket = (dispatch, username) => {
-  const socket = new WebSocket('ws://localhost:8989')
+  const socket = new WebSocket('ws://localhost:8989');
 
   socket.onopen = () => {
     socket.send(JSON.stringify({
@@ -27,7 +27,7 @@ const setupSocket = (dispatch, username) => {
     }
   }
 
-  return socket
-}
+  return socket;
+};
 
-export default setupSocket
+export default setupSocket;

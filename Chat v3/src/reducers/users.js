@@ -1,4 +1,4 @@
-import * as types from '../constants/ActionTypes'
+import * as types from '../constants/ActionTypes';
 
 const users = (state = [], action) => {
   switch (action.type) {
@@ -11,4 +11,4 @@ const users = (state = [], action) => {
   }
 }
 
-export default users
+export default users;
