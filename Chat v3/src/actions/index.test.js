@@ -1,5 +1,5 @@
-import { addMessage, addUser } from '../actions'
-import * as types from '../constants/ActionTypes'
+import { addMessage, addUser } from '../actions';
+import * as types from '../constants/ActionTypes';
 
 
 describe('adding a firts user', () => {
@@ -12,10 +12,10 @@ describe('adding a firts user', () => {
     }
     expect(addUser(user)).toEqual(action)
   })
-})
+});
 
 describe('adding a second user', () => {
-  it('should create an action to add a message with id 1', () => {
+  it('should create an action to add a user with id 1', () => {
     const user = 'Tony'
     const action = {
       type: types.ADD_USER,
@@ -24,11 +24,11 @@ describe('adding a second user', () => {
     }
     expect(addUser(user)).toEqual(action)
   })
-})
+});
 
 describe('adding a third user', () => {
-    it('should create an action to add a message with id 2', () => {
-      const user = 'Tony'
+    it('should create an action to add a user with id 2', () => {
+      const user = 'Kevin'
       const action = {
         type: types.ADD_USER,
         name: user,
@@ -36,4 +36,46 @@ describe('adding a third user', () => {
       }
       expect(addUser(user)).toEqual(action)
     })
-  })
+  });
+
+  describe('adding a message', () => {
+    it('should create an action to add a message with id 0', () => {
+      const message = 'Something'
+        const author="Mark"
+      const action = {
+        type: types.ADD_MESSAGE,
+        message,
+        author,
+        id: 0
+      }
+      expect(addMessage(message, author)).toEqual(action)
+    })
+  });
+
+  describe('adding a message', () => {
+    it('should create an action to add a message with id 1', () => {
+      const message = 'Something'
+        const author="Tony"
+      const action = {
+        type: types.ADD_MESSAGE,
+        message,
+        author,
+        id: 1
+      }
+      expect(addMessage(message, author)).toEqual(action)
+    })
+  });
+
+  describe('adding a message', () => {
+    it('should create an action to add a message with id 2', () => {
+      const message = 'Something'
+        const author="Kevin"
+      const action = {
+        type: types.ADD_MESSAGE,
+        message,
+        author,
+        id: 2
+      }
+      expect(addMessage(message, author)).toEqual(action)
+    })
+  });
