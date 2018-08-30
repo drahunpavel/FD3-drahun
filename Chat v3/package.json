@@ -19,9 +19,9 @@
     "ws": "^3.2.0"
   },
   "scripts": {
-    "start": "react-scripts start ",
+    "start": "react-scripts start --open --config ./server/.app.js",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "devDependencies": {

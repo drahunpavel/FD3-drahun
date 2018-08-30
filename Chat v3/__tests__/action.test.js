@@ -1,5 +1,5 @@
-import { addMessage, addUser } from '../actions';
-import * as types from '../constants/ActionTypes';
+import { addMessage, addUser } from './src/actions/index';
+import * as types from './src/constants/ActionTypes';
 
 
 describe('adding a firts user', () => {

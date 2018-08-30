@@ -1,6 +1,6 @@
-import messages from './messages';
-import users from './users';
-import * as types from '../constants/ActionTypes';
+import messages from './src/reducer/messages';
+import users from './src/reducer/users';
+import * as types from './src/constants/ActionTypes';
 
 describe('Messages reducer', () => {
 
