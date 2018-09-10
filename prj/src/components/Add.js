@@ -121,7 +121,7 @@ class Add extends React.Component {
                     ref='alert_button'
                     disabled={agreeNotChecked || authorIsEmpty || textIsEmpty}
                 >
-                    Показать alert
+                    Добавить статью
             </button>
             </form>
         );
