@@ -14,7 +14,7 @@ const extractLess = new ExtractTextPlugin({
 });
 
 export default new Config().merge({
-  entry: ["babel-polyfill",'./index.js'],
+  entry: ["babel-polyfill",'./src/index.js'],
   output: {
     path: __dirname + '/public',
   },
@@ -61,7 +61,7 @@ export default new Config().merge({
   plugins: [
     new ExtractTextPlugin("[name].bundle.[hash].css"),
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: './public/index.html',
       inject: "body"
     })]
 });
