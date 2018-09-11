@@ -19,8 +19,7 @@ class UsernameForm extends Component {
   }
 
   onChange(e) {
-    var textEl = ReactDOM.findDOMNode(this.refs.text);
-    console.log(textEl)
+
     this.setState({ 
       username: e.target.value,
       authorIsEmpty:false
