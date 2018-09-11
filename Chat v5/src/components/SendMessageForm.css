@@ -1,7 +1,7 @@
 .SendMessageForm-container{
-    padding: 0px;
-    border-bottom: 1px solid #4C758F ;
-    margin-bottom: 15px;
+    padding: 10px;
+    /* border-bottom: 1px solid #4C758F ; */
+    margin-bottom: 0px;
   }
 .form{
     display: flex;

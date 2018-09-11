@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./MessageList.css"
+import autoscroll from 'autoscroll-react'
 
 
 const time = string => {
@@ -27,4 +28,5 @@ class MessagesList extends Component {
   }
 }
 
-export default MessagesList
+//export default MessagesList
+export default autoscroll(MessagesList)

@@ -28,7 +28,7 @@ class SendMessageForm extends Component {
   render() {
     return (
 
-      <div>
+      <div className="SendMessageForm-container">
         <form onSubmit={this.onSubmit} className="form">
           <input
             type="text"
