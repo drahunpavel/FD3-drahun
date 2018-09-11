@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
 import "./UsernameForm.css"
 
 class UsernameForm extends Component {
@@ -6,6 +7,7 @@ class UsernameForm extends Component {
     super(props)
     this.state = {
       username: '',
+      authorIsEmpty: true
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -17,10 +19,16 @@ class UsernameForm extends Component {
   }
 
   onChange(e) {
-    this.setState({ username: e.target.value })
+    var textEl = ReactDOM.findDOMNode(this.refs.text);
+    console.log(textEl)
+    this.setState({ 
+      username: e.target.value,
+      authorIsEmpty:false
+     })
   }
 
   render() {
+    let authorIsEmpty = this.state.authorIsEmpty;
     return (
       <div className="loginform">
 
@@ -31,9 +39,13 @@ class UsernameForm extends Component {
             type="text"
             placeholder="Your login"
             onChange={this.onChange}
+            ref='text'
           />
           <button
-            className="add__btn">
+            className="add__btn"
+
+            disabled={authorIsEmpty}
+            >
             Send
           </button>
         </form>
