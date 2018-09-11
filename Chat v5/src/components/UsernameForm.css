@@ -1,0 +1,27 @@
+.loginform{
+    margin: auto;
+    width: 310px;
+    border: 10px groove #2c303b;
+    padding: 5px;
+}
+
+.user-login {
+    display: block;
+    margin: 0 0 5px 0;
+    padding: 5px;
+    width: 94%;
+    border: 1px solid rgba(3, 16, 29, 0.82);
+    font-size: 18px;
+    font-weight:bold;
+    }
+.add__btn {
+    width: 93%;
+    box-sizing: content-box;
+    color: #FFF;
+    text-transform: uppercase;
+    background: rgba(3, 16, 29, 0.82);
+    }
+.add__btn:disabled {
+    background: #CCC;
+    color: #999;
+    }

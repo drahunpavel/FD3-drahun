@@ -1,41 +1,27 @@
 import React, { Component } from 'react'
+import "./MessageList.css"
+
+
+const time = string => {
+  const date = new Date(string)
+  const minutes = date.getMinutes()
+  return `${date.getHours()}:${minutes < 10 ? '0' + minutes : minutes}`
+}
 
 class MessagesList extends Component {
   render() {
-    const styles = {
-      container: {
-        overflowY: 'scroll',
-        flex: 1,
-      },
-      ul: {
-        listStyle: 'none',
-      },
-      li: {
-        marginTop: 13,
-        marginBottom: 13,
-      },
-      senderUsername: {
-        fontWeight: 'bold',
-      },
-      message: { fontSize: 15 },
-    }
     return (
-      <div
-        style={{
-          ...this.props.style,
-          ...styles.container,
-        }}
-      >
-        <ul style={styles.ul}>
-          {this.props.messages.map((message, index) => (
-            <li key={index} style={styles.li}>
-              <div>
-                <span style={styles.senderUsername}>{message.senderId}</span>{' '}
-              </div>
-              <p style={styles.message}>{message.text}</p>
-            </li>
-          ))}
-        </ul>
+      <div className="MessagesList-container">
+        <section id="MessageList">
+          <ul id="message-list">
+            {this.props.messages.map((message, index) => (
+              <li key={index} id="message">
+                <div id="message-author">{message.senderId}&nbsp;{time(message.createdAt)}</div>
+                <div id="message-text">{message.text}</div>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     )
   }

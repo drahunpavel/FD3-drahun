@@ -1,0 +1,22 @@
+.li-WhosOnline{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .WhosOnline{
+    border-radius: 50%;
+    width: 11px;
+    height: 11px;
+    margin-right: 10px;
+    background-color:#049e1d;
+  }
+  .WhosOfline{
+    border-radius: 50%;
+    width: 11px;
+    height: 11px;
+    margin-right: 10px;
+    background-color:#3e6ada;
+  }

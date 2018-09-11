@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./UsernameForm.css"
 
 class UsernameForm extends Component {
   constructor(props) {
@@ -21,18 +22,22 @@ class UsernameForm extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h2>What is your usernane?</h2>
-          <form onSubmit={this.onSubmit}>
-            <input
-              type="text"
-              placeholder="Your full name"
-              onChange={this.onChange}
-            />
-            <input type="submit" />
-          </form>
-        </div>
+      <div className="loginform">
+
+        <h2>Enter your login or new login</h2>
+        <form onSubmit={this.onSubmit}>
+          <input
+            className="user-login"
+            type="text"
+            placeholder="Your login"
+            onChange={this.onChange}
+          />
+          <button
+            className="add__btn">
+            Send
+          </button>
+        </form>
+
       </div>
     )
   }

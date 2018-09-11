@@ -1,0 +1,18 @@
+.SendMessageForm-container{
+    padding: 0px;
+    border-bottom: 1px solid #4C758F ;
+    margin-bottom: 15px;
+  }
+.form{
+    display: flex;
+    border-top: 1px solid #4C758F ;
+  }
+.input-SendMessageForm{
+  
+    color: inherit;
+    background: none;
+    outline: none;
+    border: none;
+    flex: 1;
+    font-size: 18px;
+  }
