@@ -10,8 +10,9 @@ class App extends Component {
       currentScreen: 'WhatIsYourUsernameScreen',
     }
     this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
-  }
 
+  }
+  //проверяем статус ответа, проверяем успешность выполнения запроса, парсим json
   onUsernameSubmitted(username) {
     fetch('http://localhost:3001/users', {
       method: 'POST',
@@ -28,11 +29,13 @@ class App extends Component {
       })
       .catch(error => console.error('error', error))
   }
+  //TODO: в рендере прописать условие отображения
   render() {
     if (this.state.currentScreen === 'WhatIsYourUsernameScreen') {
       return <UsernameForm onSubmit={this.onUsernameSubmitted} />
     }
     if (this.state.currentScreen === 'ChatScreen') {
+      console.log("login is entered: "+this.state.currentUsername)
       return <ChatScreen currentUsername={this.state.currentUsername} />
     }
   }

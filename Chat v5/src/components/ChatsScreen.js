@@ -13,23 +13,18 @@ class ChatScreen extends Component {
       currentUser: {},
       currentRoom: {},
       messages: [],
-      usersWhoAreTyping: [],
     }
     this.sendMessage = this.sendMessage.bind(this)
-    this.sendTypingEvent = this.sendTypingEvent.bind(this)
-  }
 
-  sendTypingEvent() {
-    this.state.currentUser
-      .isTypingIn({ roomId: this.state.currentRoom.id })
-      .catch(error => console.error('error', error))
   }
 
   sendMessage(text) {
+    console.log(text)
     this.state.currentUser.sendMessage({
       text,
       roomId: this.state.currentRoom.id,
     })
+    console.log(this.state.currentRoom.id)
   }
 
   componentDidMount() {
@@ -40,7 +35,7 @@ class ChatScreen extends Component {
         url: 'http://localhost:3001/authenticate',
       }),
     })
-
+    console.log(this.props.currentUsername)
     chatManager
       .connect()
       .then(currentUser => {
@@ -52,18 +47,6 @@ class ChatScreen extends Component {
             onNewMessage: message => {
               this.setState({
                 messages: [...this.state.messages, message],
-              })
-            },
-            onUserStartedTyping: user => {
-              this.setState({
-                usersWhoAreTyping: [...this.state.usersWhoAreTyping, user.name],
-              })
-            },
-            onUserStoppedTyping: user => {
-              this.setState({
-                usersWhoAreTyping: this.state.usersWhoAreTyping.filter(
-                  username => username !== user.name
-                ),
               })
             },
             onUserCameOnline: () => this.forceUpdate(),
@@ -95,7 +78,6 @@ class ChatScreen extends Component {
             />
             <SendMessageForm
               onSubmit={this.sendMessage}
-              onChange={this.sendTypingEvent}
             />
           </section>
         </div>

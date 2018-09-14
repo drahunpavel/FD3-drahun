@@ -15,7 +15,8 @@ window.ee = new EventEmitter();//благодаря window.ee мы можем п
 
 class App extends React.Component {
   state = {
-    startArray: startArr
+    startArray: startArr,
+    alongArray: "",
   }
 
 
@@ -23,9 +24,9 @@ class App extends React.Component {
     var self = this;
     
     window.ee.addListener('News.add', function (item) {
-      //console.log(item)
+      console.log(item)
       var nextNews = item.concat(self.state.startArray);
-      //console.log(nextNews)
+
       self.setState({ 
         startArray: nextNews 
       });
@@ -41,7 +42,9 @@ class App extends React.Component {
     return (
       <div>
         <h3>Блог</h3>
-        <Add />
+        <Add
+        startArray={this.state.startArray}
+        />
         <News
           startArray={this.state.startArray}
         />

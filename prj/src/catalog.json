@@ -1,47 +1,52 @@
 [
     { 
-
-        "small_text":"CPU Intel Pentium G4400 ( 2 x 3.3 ГГц )",
+        "code":1,
+        "small_text":"Article title: CPU Intel Pentium G4400 ( 2 x 3.3 ГГц )",
         "text": "CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц ) CPU Intel Celeron G3900 ( 2 x 2.8 ГГц )", 
         "author": "Author1"
 
     },
     { 
-
-        "small_text":"CPU Intel Pentium G4400 ( 2 x 3.3 ГГц )",
+        "code":2,
+        "small_text":"Article title: CPU Intel Pentium G4400 ( 2 x 3.3 ГГц )",
         "text": "CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц ) CPU Intel Pentium G4400 ( 2 x 3.3 ГГц )", 
         "author": "Author2"
 
     },
     { 
-
-        "small_text":"CPU Intel Celeron ( 2 x 1.8 ГГц )",
+        "code":3,
+        "small_text":"Article title: CPU Intel Celeron ( 2 x 1.8 ГГц )",
         "text": "CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц ) CPU Intel Celeron ( 2 x 1.8 ГГц )", 
         "author": "Author3"
 
     },
     { 
-        "small_text":"CPU Intel Pentium G4600 ( 2 x 3.6 ГГц )",
+        "code":4,
+        "small_text":"Article title: CPU Intel Pentium G4600 ( 2 x 3.6 ГГц )",
         "text": "CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц ) CPU Intel Pentium G4600 ( 2 x 3.6 ГГц )", 
         "author": "Author4"
     },
     { 
-        "small_text":"CPU Intel Core i3 8100 ( 4 x 3.6 ГГц )",
+        "code":5,
+        "small_text":"Article title: CPU Intel Core i3 8100 ( 4 x 3.6 ГГц )",
         "text": "CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц ) CPU Intel Core i3 8100 ( 4 x 3.6 ГГц )", 
         "author": "Author5"
     },
     { 
-        "small_text":"CPU Intel Core i5 7400 ( 4 x 3.0 ГГц )",
+        "code":6,
+        "small_text":"Article title: CPU Intel Core i5 7400 ( 4 x 3.0 ГГц )",
         "text": "CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц ) CPU Intel Core i5 7400 ( 4 x 3.0 ГГц )", 
         "author": "Author6"
     },
     { 
-        "small_text":"CPU Intel Core i7 7700 ( 4 x 3.6 ГГц )",
+        "code":7,
+        "small_text":"Article title: CPU Intel Core i7 7700 ( 4 x 3.6 ГГц )",
         "text": "CPU Intel Core i7 7700 ( 4 x 3.6 ГГц ) CPU Intel Core i7 7700 ( 4 x 3.6 ГГц ) CPU Intel Core i7 7700 ( 4 x 3.6 ГГц ) CPU Intel Core i7 7700 ( 4 x 3.6 ГГц ) CPU Intel Core i7 7700 ( 4 x 3.6 ГГц ) CPU Intel Core i7 7700 ( 4 x 3.6 ГГц ) CPU Intel Core i7 7700 ( 4 x 3.6 ГГц ) CPU Intel Core i7 7700 ( 4 x 3.6 ГГц ) CPU Intel Core i7 7700 ( 4 x 3.6 ГГц ) CPU Intel Core i7 7700 ( 4 x 3.6 ГГц )", 
         "author": "Author7"
     },
     { 
-        "small_text":"арпрпропорCPU Intel Core i7 6800K ( 6 x 3.4 ГГц )",
+        "code":8,
+        "small_text":"Article title: CPU Intel Core i7 6800K ( 6 x 3.4 ГГц )",
         "text": "CPU Intel Core i7 6800K ( 6 x 3.4 ГГц ) CPU Intel Core i7 6800K ( 6 x 3.4 ГГц ) CPU Intel Core i7 6800K ( 6 x 3.4 ГГц ) CPU Intel Core i7 6800K ( 6 x 3.4 ГГц ) CPU Intel Core i7 6800K ( 6 x 3.4 ГГц ) CPU Intel Core i7 6800K ( 6 x 3.4 ГГц ) CPU Intel Core i7 6800K ( 6 x 3.4 ГГц ) CPU Intel Core i7 6800K ( 6 x 3.4 ГГц ) CPU Intel Core i7 6800K ( 6 x 3.4 ГГц ) CPU Intel Core i7 6800K ( 6 x 3.4 ГГц )", 
         "author": "Author8"
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 import "./UsernameForm.css"
 
 class UsernameForm extends Component {
@@ -20,10 +20,10 @@ class UsernameForm extends Component {
 
   onChange(e) {
 
-    this.setState({ 
+    this.setState({
       username: e.target.value,
-      authorIsEmpty:false
-     })
+      authorIsEmpty: false
+    })
   }
 
   render() {
@@ -44,7 +44,7 @@ class UsernameForm extends Component {
             className="add__btn"
 
             disabled={authorIsEmpty}
-            >
+          >
             Send
           </button>
         </form>
