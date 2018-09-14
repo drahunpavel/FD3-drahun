@@ -24,7 +24,7 @@ var FullList = React.createClass({
 
     //функция обработки checkbox
     checkboxСlicked: function (EO) {
-        this.changeStatelist(EO.target.checked, this.state.stateInputText);
+        this.changeStatelist(this.state.stateInputText, EO.target.checked);
     },
 
     //функция сортировки массива с учетом checkboxСlicked, inputTextChange
